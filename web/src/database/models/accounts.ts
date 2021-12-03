@@ -1,16 +1,16 @@
 import Sequelize, { Model } from 'sequelize';
 import seq from '../connection';
 
-interface UserInfo{
+interface AccountInfo{
     id?: number,
     email: string,
     password: string,
     name: string
 }
 
-interface UserInstance extends Model<UserInfo>, UserInfo{}
+interface AccountInstance extends Model<AccountInfo>, AccountInfo{}
 
-const Users = seq.define<UserInstance>('users', {
+const Accounts = seq.define<AccountInstance>('users', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -32,5 +32,5 @@ const Users = seq.define<UserInstance>('users', {
 });
 
 export {
-    Users
+    Accounts
 };
