@@ -12,11 +12,11 @@ export class AuthController {
 
     @Post()
     async postLogin(){
-
+        
     }
 
     @Post()
     async postReg(){
-        
+
     }
 }

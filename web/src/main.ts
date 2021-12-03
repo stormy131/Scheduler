@@ -8,7 +8,7 @@ import seq from './database/connection';
 async function bootstrap() {
   configDB();
 
-  await seq.sync();
+  await seq.sync({force: true});
 
   const app = await NestFactory.create(AppModule);
   await app.listen(process.env.PORT);
