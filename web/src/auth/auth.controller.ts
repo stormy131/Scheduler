@@ -5,10 +5,10 @@ import { AuthService } from './auth.service';
 export class AuthController {
     constructor(private readonly authService: AuthService){}
 
-    @Get()
-    getLoginPage(){
-
-    }
+    // @Get()
+    // getLoginPage(){
+    //     return '123';
+    // }
 
     @Post()
     async postLogin(){
