@@ -1,15 +1,13 @@
 interface Account{
     readonly id: number,
     readonly name: string,
-    readonly email: string,
-    readonly desc?: string
+    readonly email: string
 }
 
 interface UpdateAccount {
     readonly name?: string,
     readonly email?: string,
-    readonly password?: string,
-    readonly desc?: string
+    readonly password?: string
 }
 
 export {

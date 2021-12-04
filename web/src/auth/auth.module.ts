@@ -4,6 +4,7 @@ import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { JwtModule } from '@nestjs/jwt';
 import { TokensRepo } from "src/database/repository/tokens.repository";
+import { GoogleStrategy } from "./auth.strategy";
 
 @Module({
     imports: [
@@ -12,6 +13,6 @@ import { TokensRepo } from "src/database/repository/tokens.repository";
         })
     ],
     controllers: [AuthController],
-    providers: [AuthService, AccountsRepo, TokensRepo]
+    providers: [AuthService, AccountsRepo, TokensRepo, GoogleStrategy]
 })
 export class AuthModule{};

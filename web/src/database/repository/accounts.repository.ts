@@ -29,4 +29,8 @@ export class AccountsRepo {
 		return await Accounts.findOne({where: {email: account.email}}) as Account;
 	}
 
+	async findOrCreate(account: UpdateAccount): Promise<void>{
+		await Accounts.findOrCreate({where: account});
+	}
+
 }

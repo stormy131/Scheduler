@@ -46,4 +46,25 @@ export class AuthService {
 
         if(res) return this.jwtService.sign(data, {expiresIn: '1h'});
     }
+
+    async googleLogin(request): Promise<{message: string, user: {email: string}}>{
+        const { user } = request;
+
+        if(!user) return {
+            message: 'no google user',
+            user: {
+                email: ''
+            }
+        };
+
+        user.name = user.username;
+        delete user.username;
+        user.password = '';
+
+        await this.accountRepo.findOrCreate(user);
+        return {
+            message: 'User from google',
+            user
+        };
+    }
 }
