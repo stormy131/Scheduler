@@ -1,13 +1,12 @@
 <template>
   <div id="app">
 
-
   </div>
 </template>
 
 <script>
 import Menu from 'components/Menu'
-
+import Project from 'components/Project'
 export default {
   name: 'Scheduler',
   components: {
@@ -17,6 +16,6 @@ export default {
   }
 }
 </script>
-
 <style>
+ @import './assets/styles.css';
 </style>

@@ -7,14 +7,13 @@
       </div>
       <button class="main__task_show-subtask">View Subtasks({{ task.subtasks.count }}}) <i class="fas fa-angle-down"></i></button>
     </div>
-    <div class="main__task__subtasks" >
+<!--    <div class="main__task__subtasks" >
       <Subtask v-for="item of task.subtasks" :key="item.id" :subtask="item"></Subtask>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
-import Subtask from 'Subtask.vue';
 export default {
   name: "Task",
   props: ['task'],
@@ -26,9 +25,6 @@ export default {
         done: `<i class="fas fa-check"></i> Done`,
       }
     }
-  },
-  components: {
-    Subtask
   },
 }
 </script>
