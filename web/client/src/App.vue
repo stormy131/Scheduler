@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Main></Main>
+
+
   </div>
 </template>
 
 <script>
-import Main from './components/Main.vue'
+import Menu from 'components/Menu'
 
 export default {
   name: 'Scheduler',
   components: {
-    Main
+    Menu,
+    Projects,
+    Project
   }
 }
 </script>
