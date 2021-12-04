@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Patch, Post, Req, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseGuards, UseInterceptors } from "@nestjs/common";
 import { Request } from "express";
 import { JwtGuard } from "src/appGuards/jwt.guard";
 import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
@@ -10,6 +10,16 @@ import { ProjectsService } from "./projects.service";
 @UseInterceptors(JwtInterceptor)
 export class ProjectsController {
     constructor(private readonly projectsService: ProjectsService){}
+
+    @Get()
+    async getAllProjects(@Req() req: Request){
+        return await this.projectsService.getAllProjects(req);
+    }
+
+    @Get(':id')
+    async getProjectById(@Param('id') id: string){
+        return await this.projectsService.getProject(+id);
+    }
 
     @Post()
     async createProject(@Req() req: Request, @Body() body: ProjectDto){
