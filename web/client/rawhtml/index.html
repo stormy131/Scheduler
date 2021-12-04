@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scheduler</title>
+</head>
+<body>
+  <div class="container">
+    <div class="menu">
+      <div class="menu__user">
+        <img src="" alt="Tut blyat av netu" class="menu__avatar">
+        <div class="menu__info">
+          <h3 class="menu__username">Name Surname</h3>
+          <p class="menu__position">Project Manager</p>
+        </div>
+
+      </div>
+      <div class="menu__buttons">
+        <div class="menu__button">
+          <img src="./assets/projects.svg" alt="Projects" class="menu__svg">
+          <p>Project</p>
+        </div>
+        <div class="menu__button">
+          <img src="./assets/calendar.svg" alt="Projects" class="menu__svg">
+          <p>Calendar</p>
+        </div>
+        <div class="menu__button">
+          <img src="./assets/reports.svg" alt="Projects" class="menu__svg">
+          <p>Reports</p>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <header class="main__header">
+        <div class="header__left">
+          <h3 class="main__header"></h3>
+          <button class="main__edit"></button>
+          <button class="main__projects"></button>
+        </div>
+        <div class="header__right">
+          <form action="#">
+            <label>
+              <input type="text" class="main__search">
+              <button class="main__submit-search" type="submit"></button>
+            </label>
+          </form>
+        </div>
+      </header>
+      <div class="main__sort-tasks">
+        <div class="main__sort-tasks__pages">
+          <button class="main__sort-tasks-page">
+            Tasks
+          </button>
+        </div>
+        <div class="main__sort-tasks__buttons">
+          <button class="main__sort-tasks__button">
+            + Create Task
+          </button>
+        </div>
+      </div>
+      <div class="main__tasks">
+        <p class="main__par main__tasks_count">8 items in result</p>
+        <div class="main__tasks-body">
+          <div class="main__task">
+            <h4 class="task__status_progress">In progress</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask"></button>
+          </div>
+          <div class="main__task">
+            <h4 class="task__status_progress">In progress</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask"></button>
+          </div>
+          <div class="main__task">
+            <h4 class="task__status_progress">In progress</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask"></button>
+          </div>
+          <div class="main__task">
+            <h4 class="task__status_progress">Done</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask"></button>
+          </div>
+          <div class="main__task">
+            <h4 class="task__status_progress">Done</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask"></button>
+          </div>
+          <div class="main__task">
+            <h4 class="task__status_paused">Paused</h4>
+            <h4 class="task_title">Name of any task</h4>
+            <button class="task_show-subtask">View Subtasks (2)</button>
+            <div class="task__subtasks">
+              <div class="subtask">
+                <h4 class="task__status_progress">In progress</h4>
+                <h4 class="task_title">Какое то злоебучее подзадание</h4>
+                <p class="subtask__date">Feb 14</p>
+              </div>
+              <div class="subtask">
+                <h4 class="task__status_done">Done</h4>
+                <h4 class="task_title">Какое то злоебучее подзадание</h4>
+                <p class="subtask__date">Mar 24</p>
+              </div>
+            </div>
+          </div>
+          <div class="main__create-task">
+            <button class="create-task">
+              +
+            </button>
+            <p class="create-task__text">Create task</p>
+            <button class="task_show-subtask"></button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
