@@ -5,8 +5,8 @@ const getAllTasks = async (req, res) => {
     res.send(await ProjectsRepo.findAll(req.body.id));
 };
 
-const deleteTask = async (id) => {
-    await TasksRepo.delete(id);
+const deleteTask = async (req, res) => {
+    await TasksRepo.delete(req.body.id);
     res.send();
 };
 
