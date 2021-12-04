@@ -1,8 +1,8 @@
 interface Project {
-    readonly id: number,
+    readonly id?: number,
     readonly name: string,
-    owner: number,
-    active: boolean
+    owner?: number,
+    active?: boolean
 }
 
 export {

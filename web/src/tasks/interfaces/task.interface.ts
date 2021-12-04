@@ -3,7 +3,7 @@ interface Task {
     urgency: boolean,
     importance: boolean,
     deadline: string,
-    fromProject?: number
+    fromProject: number
 }
 
 interface UpdateTask {

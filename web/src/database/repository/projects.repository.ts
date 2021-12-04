@@ -23,4 +23,10 @@ export class ProjectsRepo{
     async findActive() : Promise<ProjectInfo> {
         return await Projects.findOne({where: {active: true}});
     }
+
+    async updateTask(id: number) {
+        const old = await Projects.findOne({where: {active: true}});
+        await Projects.update({active: false}, {where: {id: old.id}});
+        await Projects.update({active: true}, {where: {id}});
+    }
 }

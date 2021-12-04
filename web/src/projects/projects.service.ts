@@ -9,6 +9,7 @@ export class ProjectsService{
     async createProject(req, project: Project) {
         const newProject: Project = project;
         project.owner = req.body.user.id;
+        project.active = false;
 
         return await this.projectsRepo.create(newProject);
     }
@@ -34,14 +35,7 @@ export class ProjectsService{
     }
 
     async changeActiveProject(id: number) {
-        const oldActive = await this.projectsRepo.findActive();
-
-        if (oldActive) {
-            oldActive.active = false;
-        }
-
-        const newActive = await this.projectsRepo.find(id);
-        newActive.active = true;
+        await this.projectsRepo.updateTask(id);
     }
 
     async deleteTask(id: number) {

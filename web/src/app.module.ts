@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { GoogleStrategy } from './auth/auth.strategy';
 import { TokensRepo } from './database/repository/tokens.repository';
+import { ProjectsModule } from './projects/projects.module';
 import { TasksModule } from './tasks/tasks.module';
 
 require('dotenv').config();
@@ -17,7 +18,7 @@ require('dotenv').config();
     JwtModule.register({
       secret: process.env.TOKEN_SECRET
     }),
-    AuthModule, TasksModule, AccountsModule,
+    AuthModule, TasksModule, AccountsModule, ProjectsModule
     // ServeStaticModule.forRoot({
     //   rootPath: join(__dirname, '..', 'static')
     // }),

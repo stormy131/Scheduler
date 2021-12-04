@@ -20,8 +20,8 @@ export class TasksService{
         return res;
     }
 
-    async getAllTasks(req) : Promise<any> {
-        const res = await this.tasksRepo.findAll(req.body.user.id)
+    async getAllTasks(data: {fromProject: number}) : Promise<any> {
+        const res = await this.tasksRepo.findAll(data.fromProject);
 
         if (!res) {
             return 'no tasks found';
