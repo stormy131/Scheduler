@@ -6,11 +6,11 @@ import { AccountsRepo } from "../database/repository/accounts.repository";
 export class AccountService {
     constructor(private readonly accountsRepo: AccountsRepo){}
 
-    async deleteAccount(req): Promise<boolean>{
+    async deleteAccount(req) {
         return await this.accountsRepo.delete(req.body.user.id);
     }
 
-    async updateAccount(req, newValues: UpdateAccount): Promise<boolean>{
-        return this.accountsRepo.update(req.body.user.id, newValues);
+    async updateAccount(req, newValues: UpdateAccount) {
+        return await this.accountsRepo.update(req.body.user.id, newValues);
     }
 }

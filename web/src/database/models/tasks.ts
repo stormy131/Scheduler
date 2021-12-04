@@ -46,5 +46,6 @@ const Tasks = seq.define<TaskInstance>('tasks', {
 });
 
 export {
+    TaskInfo,
     Tasks
 };
