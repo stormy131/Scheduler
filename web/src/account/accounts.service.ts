@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Account, UpdateAccount } from "src/account/interface/account.interface";
+import { UpdateAccount } from "src/account/interface/account.interface";
 import { AccountsRepo } from "../database/repository/accounts.repository";
 
 @Injectable()

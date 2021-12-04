@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 import seq from '../connection';
-import { Users } from './users';
+import { Accounts } from './accounts';
 
 interface TaskInfo{
     id?: number,
@@ -39,7 +39,7 @@ const Tasks = seq.define<TaskInstance>('tasks', {
     owner: {
         type: Sequelize.INTEGER,
         references: {
-            model: Users,
+            model: Accounts,
             key: 'id'
         }
     }

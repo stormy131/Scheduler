@@ -1,15 +1,17 @@
-import { Users } from './models/users';
+import { Accounts } from './models/accounts';
 import { Tasks } from './models/tasks';
+import { RefTokens } from './models/tokens';
 
 function configDB(){
-    Users;
+    Accounts;
+    RefTokens;
 
-    Users.hasMany(Tasks, {
+    Accounts.hasMany(Tasks, {
         foreignKey: 'owner',
         sourceKey: 'id'
     });
 
-    Tasks.belongsTo(Users, {
+    Tasks.belongsTo(Accounts, {
         foreignKey: 'owner',
         targetKey: 'id'
     });
