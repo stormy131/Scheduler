@@ -2,6 +2,6 @@ const Router = require('express').Router();
 
 Router.route()
     .get()
-    .post();
+    .delete();
 
 module.exports = Router;

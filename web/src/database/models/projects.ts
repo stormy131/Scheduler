@@ -4,6 +4,7 @@ import { Accounts } from './accounts';
 
 interface ProjectInfo{
     id?: number,
+    name: string
     owner: number,
     active: boolean
 }
@@ -26,6 +27,10 @@ const Projects = seq.define<ProjectsInstance>('projects', {
     },
     active:{
         type: Sequelize.BOOLEAN,
+        allowNull: false
+    },
+    name: {
+        type: Sequelize.STRING,
         allowNull: false
     }
 });
