@@ -36,5 +36,6 @@ const Projects = seq.define<ProjectsInstance>('projects', {
 });
 
 export {
-    Projects
+    Projects,
+    ProjectInfo
 };

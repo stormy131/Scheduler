@@ -6,11 +6,8 @@ import { Task, UpdateTask } from "./interfaces/task.interface";
 export class TasksService{
     constructor(private readonly tasksRepo: TasksRepo){}
 
-    async createTask(req, task: Task) {
-        const newTask: Task = task;
-        task.owner = req.body.user.id;
-
-        return await this.tasksRepo.create(newTask);
+    async createTask(task: Task) {
+        return await this.tasksRepo.create(task);
     }
 
     async getTask(id: number) : Promise<any> {

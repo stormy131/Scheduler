@@ -1,16 +1,17 @@
 interface Task {
     name: string,
-    priority: number,
-    approximate_duration: number,
+    urgency: boolean,
+    importance: boolean,
     deadline: string,
-    owner?: number
+    fromProject?: number
 }
 
 interface UpdateTask {
     readonly name?: string,
-    readonly priority?: number,
-    readonly approximate_duration?: number,
-    readonly deadline?: string
+    readonly urgency?: boolean,
+    readonly importance?: boolean,
+    readonly deadline?: string,
+    readonly fromProject?: number
 }
 
 export {
