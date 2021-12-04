@@ -1,10 +1,10 @@
 import { Accounts } from './models/accounts';
 import { Tasks } from './models/tasks';
-import { RefTokens } from './models/tokens';
+import { Tokens } from './models/tokens';
 
 function configDB(){
     Accounts;
-    RefTokens;
+    Tokens;
 
     Accounts.hasMany(Tasks, {
         foreignKey: 'owner',

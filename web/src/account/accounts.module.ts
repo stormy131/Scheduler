@@ -3,6 +3,7 @@ import { AccountsController } from "./accounts.controller";
 import { AccountService } from "./accounts.service";
 import { JwtModule } from '@nestjs/jwt';
 import { AccountsRepo } from "src/database/repository/accounts.repository";
+import { TokensRepo } from "src/database/repository/tokens.repository";
 
 @Module({
     imports: [
@@ -11,6 +12,6 @@ import { AccountsRepo } from "src/database/repository/accounts.repository";
         })
     ],
     controllers: [AccountsController],
-    providers: [AccountService, AccountsRepo]
+    providers: [AccountService, AccountsRepo, TokensRepo]
 })
 export class AccountsModule{}

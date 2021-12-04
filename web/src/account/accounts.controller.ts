@@ -3,6 +3,7 @@ import { JwtGuard } from "src/appGuards/jwt.guard";
 import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
 import { AccountService } from "./accounts.service";
 import { UpdateAccount } from "./interface/account.interface";
+import { Request } from 'express';
 
 @Controller('account')
 @UseGuards(JwtGuard)

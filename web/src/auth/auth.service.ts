@@ -18,7 +18,7 @@ export class AuthService {
 
         if(!res) return 'Invalid user data';
 
-        const token = this.jwtService.sign({username: res.name, id: res.id}, {expiresIn: '1h'});
+        const token = this.jwtService.sign({name: res.name, id: res.id}, {expiresIn: '1h'});
         const refToken = this.jwtService.sign({username: res.name, id: res.id});
 
         await this.tokenRepo.create(refToken);
