@@ -5,8 +5,8 @@ import { Projects } from './projects';
 interface TaskInfo{
     id?: number,
     name: string,
-    priority: number,
-    approximate_duration: number,
+    importance: boolean,
+    urgency: boolean,
     deadline: string,
     fromProject: number
 }
@@ -24,12 +24,12 @@ const Tasks = seq.define<TaskInstance>('tasks', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    priority: {
-        type: Sequelize.INTEGER,
+    importance: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    approximate_duration: {
-        type: Sequelize.INTEGER,
+    urgency: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
     deadline: {

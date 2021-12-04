@@ -1,12 +1,12 @@
-const ProjectsRepo = require();
+const ProjectsRepo = require('../../web/src/database/repository/');
 const TasksRepo = require('../../web/src/database/repository/tasks.repository');
 
-const getAllTasks = () => {
-
+const getAllTasks = async () => {
+    return await ProjectsRepo.getTasks();
 };
 
-const deleteTask = async () => {
-    await 
+const deleteTask = async (id) => {
+    await TasksRepo.delete(id);
 };
 
 module.exports = {
