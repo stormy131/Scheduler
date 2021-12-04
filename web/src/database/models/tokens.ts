@@ -1,13 +1,13 @@
 import Sequelize, { Model } from 'sequelize';
 import seq from '../connection';
 
-interface RefTokenInfo {
+interface TokenInfo {
     token: string
 }
 
-interface RefTokenInstance extends Model<RefTokenInfo>, RefTokenInfo{}
+interface TokenInstance extends Model<TokenInfo>, TokenInfo{}
 
-const RefTokens = seq.define<RefTokenInstance>('tokens', {
+const Tokens = seq.define<TokenInstance>('tokens', {
     token: {
         type: Sequelize.STRING,
         allowNull: false
@@ -15,5 +15,6 @@ const RefTokens = seq.define<RefTokenInstance>('tokens', {
 });
 
 export {
-    RefTokens
+    TokenInfo,
+    Tokens
 };
