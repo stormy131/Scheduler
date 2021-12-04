@@ -2,8 +2,8 @@ import { Module } from "@nestjs/common";
 import { AccountsController } from "./accounts.controller";
 import { AccountService } from "./accounts.service";
 import { JwtModule } from '@nestjs/jwt';
-import { AccountsRepo } from "src/database/repository/accounts.repository";
-import { TokensRepo } from "src/database/repository/tokens.repository";
+import { AccountsRepo } from "../database/repository/accounts.repository";
+import { TokensRepo } from "../database/repository/tokens.repository";
 
 @Module({
     imports: [

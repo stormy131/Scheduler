@@ -20,7 +20,7 @@ export class TasksRepo{
         return await Tasks.findOne({where: {id}}); 
     }
 
-    async findAll(userId: number): Promise<Task[]>{
-        return await Tasks.findAll({where: {owner: userId}});
+    async findAll(fromProject: number): Promise<Task[]>{
+        return await Tasks.findAll({where: {fromProject}});
     }
 }
