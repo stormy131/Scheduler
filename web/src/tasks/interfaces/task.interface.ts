@@ -3,7 +3,7 @@ interface Task {
     priority: number,
     approximate_duration: number,
     deadline: string,
-    owner: number
+    owner?: number
 }
 
 interface UpdateTask {

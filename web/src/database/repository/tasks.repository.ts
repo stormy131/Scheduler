@@ -5,7 +5,7 @@ import { TaskInfo, Tasks } from "../models/tasks";
 @Injectable()
 export class TasksRepo{
     async create(task: Task) {
-        await Tasks.create(task);
+        await Tasks.create(task as TaskInfo);
     }
 
     async update(id: number, newValues: UpdateTask) {
@@ -20,7 +20,7 @@ export class TasksRepo{
         return await Tasks.findOne({where: {id}}); 
     }
 
-    async findAll(userId: number): Promise<TaskInfo[]>{
+    async findAll(userId: number): Promise<Task[]>{
         return await Tasks.findAll({where: {owner: userId}});
     }
 }
