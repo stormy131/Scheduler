@@ -39,21 +39,25 @@
         </div>
       </div>
     </div>
+    <NewTask v-show="isEdit"></NewTask>
   </main>
 </template>
 
 <script>
 import Task from './Task'
+import NewTask from "./NewTask";
 export default {
   props: ['project'],
   name: "Project",
   data() {
     return {
-      tasks: []
+      tasks: [],
+      isEdit: false,
     }
   },
   components: {
-    Task
+    Task,
+    NewTask,
   },
   methods: {
     editHandler() {
@@ -64,6 +68,11 @@ export default {
     projectCount() {
       return this.tasks.length
     }
+  },
+  mounted() {
+    this.$root.request('/api/tasks', 'GET', {id: this.$router.params.id}).then(data => {
+      this.tasks = data;
+    })
   }
 }
 </script>

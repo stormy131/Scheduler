@@ -1,19 +1,11 @@
 import Vue from 'vue';
+import './plugins/sso'
 import VueRouter from 'vue-router';
+import SSO from 'vue-sso'
 import App from './App.vue';
-import Project from './components/Project'
+import router from './router'
 
 Vue.config.productionTip = false
-const routes = [
-  {route: '/login', component: Login},
-  {route: '/register', component: Register},
-  {route: '/index', component: Projects},
-  {route: '/project/:id', component: Project},
-];
-
-const router = new VueRouter({
-  routes
-});
 
 new Vue({
   render: h => h(App),
@@ -35,3 +27,8 @@ new Vue({
 
 
 Vue.use(VueRouter)
+Vue.use(SSO, {
+  baseURL: '/api',
+  authEndpoint: '/auth/login',
+  key: 'scheduler'
+})
