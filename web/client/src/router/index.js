@@ -10,29 +10,29 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    route: '/auth',
+    path: '/auth',
     name: 'Login',
     component: Login,
   },
   {
-    route: '/auth/reg',
+    path: '/auth/reg',
     name: 'Register',
     component: Register
   },
   {
-    route: '/',
+    path: '/projects',
     name: 'Projects',
     component: Main
   },
   {
-    route: '/project/:id',
+    path: '/project/:id',
     name: 'Project',
     component: SingleProject
   },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 export default router

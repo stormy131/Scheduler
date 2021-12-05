@@ -3,9 +3,11 @@ import './plugins/sso'
 import VueRouter from 'vue-router';
 import SSO from 'vue-sso'
 import App from './App.vue';
-import router from './router'
+import router from './router';
+import axios from 'axios'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+window.axios = axios;
 
 new Vue({
   render: h => h(App),

@@ -1,6 +1,6 @@
 <template>
   <div class="menu__button" @click="clickHandler">
-    <img src="{{ src }}" alt="{{ name }}}" class="menu__svg">
+    <img v-bind:src="src" v-bind:alt="this.name" class="menu__svg">
     <p>Reports</p>
   </div>
 </template>
@@ -11,17 +11,17 @@ export default {
   props: ['href, name'],
   computed: {
     src() {
-      return `../assets/${name.toLowerCase()}.svg`
+      return `../assets/${this.name.toLowerCase()}.svg`
     }
   },
   methods: {
     clickHandler() {
-      this.$parent.$refs.$router.go(this.href);
+      this.$parent.$parent.$router.push(this.href);
     }
   }
 }
 </script>
 
 <style scoped>
-
+@import "../assets/styles.css";
 </style>

@@ -5,11 +5,12 @@
         <img src="../assets/avatar.jpg" alt="Tut blyat av netu" class="menu__avatar">
         <div class="menu__info">
           <h3 class="menu__username">{{ name }}</h3>
-          <p class="menu__position">{{ position }}}</p>
+          <p class="menu__position">{{ position }}</p>
         </div>
-      <MenuButton href="/reports" name="Project"></MenuButton>
-      <MenuButton href="/calendar" name="Calendar"></MenuButton>
-      <MenuButton href="/reports" name="Reports"></MenuButton>
+        <MenuButton href="/reports" name="Projects"></MenuButton>
+        <MenuButton href="/calendar" name="Calendar"></MenuButton>
+        <MenuButton href="/reports" name="Reports"></MenuButton>
+      </div>
     </div>
   </div>
 </template>

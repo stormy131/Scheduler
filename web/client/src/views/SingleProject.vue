@@ -12,6 +12,7 @@ import request from "../plugins/request";
 
 export default {
   name: "SingleProject",
+
   components: {
     Menu,
     Project,
