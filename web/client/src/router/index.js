@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Projects from "../components/Projects";
-import Project from "../components/Project";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Main from "../views/Main";
+import SingleProject from "../views/SingleProject";
+import Login from "../views/Login";
+import Register from "../views/Register";
 
 
 Vue.use(VueRouter)
@@ -22,12 +22,12 @@ const routes = [
   {
     route: '/',
     name: 'Projects',
-    component: Projects
+    component: Main
   },
   {
     route: '/project/:id',
     name: 'Project',
-    component: Project
+    component: SingleProject
   },
 ]
 

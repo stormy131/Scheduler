@@ -1,33 +1,28 @@
 <template>
-  <div>
+  <div class="container">
     <Menu user="user" ref="menu"></Menu>
-    <Projects ref="projects"></Projects>
-    <div>404 v-else</div>
+    <Project ref="project"></Project>
   </div>
 </template>
 
 <script>
 import Menu from "../components/Menu";
-import Projects from "../components/Projects";
-import request from "../plugins/request.js"
+import Project from "../components/Project";
+import request from "../plugins/request";
+
 export default {
-  name: "Main",
+  name: "SingleProject",
   components: {
     Menu,
-    Projects,
+    Project,
   },
   data() {
     return {
       user: null
     }
   },
-  computed: {
-    route() {
-      return this.$route.path
-    }
-  },
   mounted() {
-    request('/api/').then(data => {
+    request('/api/account').then(data => {
       this.user = data;
     })
   },

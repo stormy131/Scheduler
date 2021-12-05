@@ -3,7 +3,7 @@
     <header class="main__header">
       <div class="header__left">
         <h3 class="main__heading">{{ project.projectName }}</h3>
-        <button class="main__edit" @click="editHandler">Edit</button>
+        <button class="main__edit" @click="isEdit=true">Edit</button>
         <a class="main__projects" href="#"><i class="fas fa-chevron-left" ></i> All projects</a>
       </div>
       <div class="header__right">
@@ -22,7 +22,7 @@
         </button>
       </div>
       <div class="main__sort-tasks__buttons">
-        <button class="main__sort-tasks__button">
+        <button class="main__sort-tasks__button" @click="isCreate=true">
           + Create Task
         </button>
       </div>
@@ -35,7 +35,7 @@
           <button class="create__task_button">
             <i class="fas fa-plus"></i>
           </button>
-          <p class="create__task__text">Create task</p>
+          <p class="create__task__text" @click="isCreate=true">Create task</p>
         </div>
       </div>
     </div>
@@ -54,6 +54,7 @@ export default {
     return {
       tasks: [],
       isEdit: false,
+      isCreate: false
     }
   },
   components: {
@@ -71,7 +72,7 @@ export default {
     }
   },
   mounted() {
-    request('/api/tasks', 'GET', {id: this.$router.params.id}).then(data => {
+    request('/api/tasks', 'GET', {id: this.$root.$router.params.id}).then(data => {
       this.tasks = data;
     })
   }
