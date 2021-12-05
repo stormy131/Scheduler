@@ -1,6 +1,7 @@
 export class TaskDto{
     readonly name: string;
-    readonly priority: number;
-    readonly approximate_duration: number;
-    readonly deadline: string
+    readonly urgency: boolean;
+    readonly importance: boolean;
+    readonly deadline: string;
+    readonly fromProject: number;
 }
