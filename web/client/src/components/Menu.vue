@@ -17,6 +17,7 @@
   import MenuButton from './MenuButton'
   export default {
     name: 'Menu',
+    props: ['user'],
     data() {
       return {
         name: 'Name Surname',

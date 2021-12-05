@@ -10,16 +10,17 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    route: '/login',
+    route: '/auth',
     name: 'Login',
     component: Login,
   },
   {
-    route: '/register',
+    route: '/auth/reg',
     name: 'Register',
-    component: Register},
+    component: Register
+  },
   {
-    route: '/index',
+    route: '/',
     name: 'Projects',
     component: Projects
   },

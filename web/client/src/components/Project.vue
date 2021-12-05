@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import request from '../plugins/request'
 import Task from './Task'
 import NewTask from "./NewTask";
 export default {
@@ -61,7 +62,7 @@ export default {
   },
   methods: {
     editHandler() {
-      //TODO
+      this.isEdit = true;
     }
   },
   computed: {
@@ -70,7 +71,7 @@ export default {
     }
   },
   mounted() {
-    this.$root.request('/api/tasks', 'GET', {id: this.$router.params.id}).then(data => {
+    request('/api/tasks', 'GET', {id: this.$router.params.id}).then(data => {
       this.tasks = data;
     })
   }

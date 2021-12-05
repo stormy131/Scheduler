@@ -10,25 +10,12 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
-  methods: {
-    request(url, method='GET', data={}) {
-      return fetch(url,{
-        method,
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-          .then(result => result.json())
-          .catch(err => console.error(err));
-    }
-  }
 }).$mount('#app')
 
 
 Vue.use(VueRouter)
 Vue.use(SSO, {
   baseURL: '/api',
-  authEndpoint: '/auth/login',
+  authEndpoint: '/auth',
   key: 'scheduler'
 })

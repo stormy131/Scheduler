@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 
-<style lang="scss">
+<script>
 
+export default {
+  name: 'App',
+  mounted() {
+    if(!this.$parent.$SSO.loggedin()) {
+      this.$parent.$router.push('/auth')
+    }
+  }
+}
+</script>
+<style>
+@import './assets/styles.css';
 </style>
