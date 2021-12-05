@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <Main></Main>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Main from './components/Main.vue'
 
 export default {
-  name: 'Scheduler',
-  components: {
-    Main
+  name: 'App',
+  mounted() {
+    if(!this.$parent.$SSO.loggedin()) {
+      this.$parent.$router.push('/auth')
+    }
   }
 }
 </script>
-
 <style>
+@import './assets/styles.css';
 </style>

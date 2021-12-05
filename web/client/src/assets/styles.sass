@@ -1,0 +1,261 @@
+$button-color: #3c4ddb
+$hover-color: #5f96e9
+
+@font-face
+  font-family: "JTLeonor"
+  src: url("./JTLeonor-Regular.otf")
+
+*
+  font-family: "JTLeonor", sans-serif
+
+button, a
+  text-decoration: none
+  background: none
+  border: none
+  cursor: pointer
+
+input:focus
+  outline-color: $hover-color
+
+.container
+  display: grid
+  grid-template-columns: 1fr 4fr
+
+
+
+.menu
+  background-color: #ffffff
+  padding: 45px 24px
+  margin-bottom: 12px
+  margin-top: 0
+
+  &__container
+    display: flex
+    flex-direction: column
+    position: fixed
+
+
+  &__user
+    display: flex
+    align-items: center
+
+  &__avatar
+    width: 50px
+    height: 50px
+    border-radius: 50px
+    margin-right: 24px
+
+  &__button
+    display: flex
+    margin-top: 60px
+    font-weight: 600
+    cursor: pointer
+
+
+
+
+    &:hover
+      color: $hover-color
+
+
+  &__svg
+    margin-right: 22px
+
+
+  &__position
+    font-size: 16px
+    color: $hover-color
+
+  &__username
+    font-size: 20px
+
+  &__info
+    font-weight: 600
+
+
+.active
+  color: $button-color
+
+.main
+
+  background-color: #f9f9fb
+  padding: 40px 28px
+
+  &__heading
+    font-size: 25px
+    font-weight: 600
+    color: #000
+    line-height: 15px
+
+  &__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  &__edit, &__projects
+    font-size: 16px
+    font-weight: 600
+    color: rgba(0, 0, 0, 0.5)
+    margin-left: 22px
+  &__projects
+    display: block
+
+  &__search
+    width: 357px
+    height: 35px
+    border-radius:  7px 0 0 7px
+    border: solid 0.5px rgba(0, 0, 0, 0.3)
+    background-color: #fff
+    font-size: 16px
+    font-weight: 600
+    text-align: left
+    color: rgba(0, 0, 0, 0.3)
+    padding-left: 5px
+    border-right: none
+
+
+  &__submit-search
+    width: 50px
+    height: 38px
+    border-radius: 0 7px  7px 0
+    border: solid 0.5px rgba(0, 0, 0, 0.3)
+    background-color: #fff
+    border-left: none
+    color: rgba(0, 0, 0, 0.3)
+
+  &__sort-tasks
+    display: flex
+    flex-direction: column
+    margin-top: 25px
+    flex-grow: 0
+    border-radius: 7px
+    box-shadow: 2px 2px 50px -1px rgba(0, 0, 0, 0.03), -2px -2px 50px -1px rgba(0, 0, 0, 0.03)
+    background-color: #fff
+    padding: 40px 40px 20px 30px
+
+    &-page
+      font-size: 16px
+      font-weight: 600
+      text-align: left
+      color: #3c4ddb
+      border-bottom: 2px solid #3c4ddb
+
+    &__button
+      width: 132px
+      height: 39px
+      border-radius: 7px
+      background-color: #3c4ddb
+      padding: 10px
+      font-size: 16px
+      font-weight: 600
+      text-align: left
+      color: #fff
+
+    &__buttons
+      display: flex
+      justify-content: flex-end
+      margin-top: 12.5px
+
+    &__pages
+      width: 100%
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.4)
+
+
+  &__par
+    font-size: 16px
+    font-weight: 600
+    text-align: left
+    color: rgba(0, 0, 0, 0.5)
+
+  &__tasks
+    margin-top: 50px
+
+    &-body
+      column-gap: 100px
+      row-gap: 100px
+      display: grid
+      grid-template-columns: repeat(auto-fit, 300px)
+      grid-template-rows: 1fr
+      padding: 40px 80px
+      justify-content: space-between
+
+  &__task, .create__task
+    border-radius: 7px
+    box-shadow: 2px 2px 50px -1px rgba(0, 0, 0, 0.03), -2px -2px 50px -1px rgba(0, 0, 0, 0.03)
+    background-color: #fff
+    align-self: flex-start
+
+    &_progress
+      font-size: 16px
+      font-weight: 600
+      color: #fabd22
+    &_pause
+      font-size: 16px
+      font-weight: 600
+      text-align: left
+      color: #5f96e9
+    &_done
+      font-size: 16px
+      font-weight: 600
+      text-align: left
+      color: #5ac08f
+
+    &_show-subtask
+      padding: 0
+      font-size: 16px
+      font-weight: 600
+      color: #3c4ddb
+      margin-top: 60px
+
+    &__subtasks
+      padding: 12px 20px
+      border-radius: 7px
+      box-shadow: 2px 2px 50px -1px rgba(0, 0, 0, 0.02), -2px -2px 50px -1px rgba(0, 0, 0, 0.02)
+      background-color: #f3f3f7
+      & div:not(:last-child)
+        border-bottom: 0.4px solid rgba(0, 0, 0, 0.3)
+
+
+.task
+  border-radius: 7px
+  box-shadow: 2px 2px 50px -1px rgba(0, 0, 0, 0.03), -2px -2px 50px -1px rgba(0, 0, 0, 0.03)
+  background-color: #fff
+  padding: 12px 20px
+  display: flex
+  align-items: flex-start
+  flex-flow: column
+
+.create__task
+  align-items: center !important
+  padding: 12px 20px
+  display: flex
+  flex-flow: column
+
+  &_button
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    background-color: #3c4ddb
+    color: #ffffff
+    font-size: 20px
+    padding: 15px
+
+  &__text
+    font-size: 16px
+    font-weight: 600
+    text-align: left
+    color: #3c4ddb
+
+
+.header
+  &__left
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    width: 200px
+
+  &__right form
+    display: flex
+    align-items: center
+
+
