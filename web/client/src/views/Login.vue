@@ -3,15 +3,29 @@
     <div class="welcome">Welcome</div>
     <div class="heading">Sign in</div>
     <div class="subheading">New user? <router-link href="/auth/reg">Create an account.</router-link></div>
-    <label>Email address <input name="email" type="text"></label>
-    <label>Password <input name="password" type="password"></label>
+    <label>Email address <input name="email" type="text" v-model.lazy="email"></label>
+    <label>Password <input name="password" type="password" v-model.lazy="password"></label>
     <button type="button">Log in</button>
   </form>
 </template>
 
 <script>
 export default {
-  name: "Login"
+  name: "Login",
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+    submitHandler() {
+      this.$parent.$SSO.login(this.email, this.password).then(r => {
+        console.log(r);
+        this.$parent.$router.push('/');
+      })
+    }
+  }
 }
 </script>
 
