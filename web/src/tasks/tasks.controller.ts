@@ -13,18 +13,14 @@ export class TasksController {
     constructor(private readonly tasksService: TasksService){}
 
     @Get()
-    async getTasks(@Req() req: Request, @Body() data: {id?: number})
-        : Promise<string | TaskDto | TaskDto[]>{
-            if(!data.id){
-                return await this.tasksService.getAllTasks(req);
-            }
-
-            return await this.tasksService.getTask(data.id);
+    async getTasks(@Body() data: {fromProject: number})
+        : Promise<string | TaskDto | TaskDto[]> {
+            return await this.tasksService.getAllTasks(data);
     }
 
     @Post()
-    async postTask(@Req() req: Request, @Body() data: TaskDto){
-        await this.tasksService.createTask(req, data);
+    async postTask(@Body() data: TaskDto){
+        await this.tasksService.createTask(data);
     }
 
     @Patch(':id')

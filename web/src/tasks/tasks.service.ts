@@ -1,16 +1,13 @@
 import { Injectable } from "@nestjs/common";
-import { TasksRepo } from "src/database/repository/tasks.repository";
+import { TasksRepo } from "../database/repository/tasks.repository";
 import { Task, UpdateTask } from "./interfaces/task.interface";
 
 @Injectable()
 export class TasksService{
     constructor(private readonly tasksRepo: TasksRepo){}
 
-    async createTask(req, task: Task) {
-        const newTask: Task = task;
-        task.owner = req.body.user.id;
-
-        return await this.tasksRepo.create(newTask);
+    async createTask(task: Task) {
+        return await this.tasksRepo.create(task);
     }
 
     async getTask(id: number) : Promise<any> {
@@ -23,8 +20,8 @@ export class TasksService{
         return res;
     }
 
-    async getAllTasks(req) : Promise<any> {
-        const res = await this.tasksRepo.findAll(req.body.user.id)
+    async getAllTasks(data: {fromProject: number}) : Promise<any> {
+        const res = await this.tasksRepo.findAll(data.fromProject);
 
         if (!res) {
             return 'no tasks found';

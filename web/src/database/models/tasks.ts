@@ -1,14 +1,14 @@
 import Sequelize, { Model } from 'sequelize';
 import seq from '../connection';
-import { Accounts } from './accounts';
+import { Projects } from './projects';
 
 interface TaskInfo{
     id?: number,
     name: string,
-    priority: number,
-    approximate_duration: number,
+    urgency: boolean,
+    importance: boolean,
     deadline: string,
-    owner: number
+    fromProject: number
 }
 
 interface TaskInstance extends Model<TaskInfo>, TaskInfo{}
@@ -24,22 +24,22 @@ const Tasks = seq.define<TaskInstance>('tasks', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    priority: {
-        type: Sequelize.INTEGER,
+    urgency: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    approximate_duration: {
-        type: Sequelize.INTEGER,
+    importance: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
     deadline: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    owner: {
+    fromProject: {
         type: Sequelize.INTEGER,
         references: {
-            model: Accounts,
+            model: Projects,
             key: 'id'
         }
     }

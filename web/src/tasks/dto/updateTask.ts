@@ -1,6 +1,6 @@
 export class UpdateTaskDto{
     readonly name?: string;
-    readonly priority?: number;
-    readonly approximate_duartion?: number;
+    readonly importance?: boolean;
+    readonly urgency?: boolean;
     readonly deadline?: string;
 }
