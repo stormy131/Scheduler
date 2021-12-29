@@ -1,6 +1,6 @@
 <template>
   <div class="menu__button" @click="clickHandler">
-    <img class="menu__svg" v-bind:alt="this.name" v-bind:src="src">
+    <img class="menu__svg" v-bind:alt="name" v-bind:src="src">
     <p>Reports</p>
   </div>
 </template>

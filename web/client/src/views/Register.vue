@@ -3,7 +3,7 @@
     <div class="welcome">Welcome</div>
     <div class="heading">Create an account</div>
     <div class="subheading">Already have an account?
-      <router-link href="/auth">Sign in.</router-link>
+      <router-link :to="{ path: '/auth'}">Sign in.</router-link>
     </div>
     <label>Email address <input v-model.lazy="email" name="email" type="text"></label>
     <div class="name">
@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 * {
-  font-family: Noto Sans;
+  font-family: Noto Sans, sans-serif;
   box-sizing: border-box;
 }
 

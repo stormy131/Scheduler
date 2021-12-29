@@ -2,7 +2,7 @@
   <div class="item">
     <div class="name">{{ project.name }}</div>
     <button class="activate">
-      <div v-show="!(project.status === 'activated')">Activate</div>
+      <span v-show="!(project.status === 'activated')">Activate</span>
     </button>
     <div class="status">{{ project.status }}</div>
     <div class="date">{{ project.deadline }}</div>
