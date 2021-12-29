@@ -1,4 +1,4 @@
-export default function request (url, method = 'GET', data = {}) {
+export default function request(url, method = 'GET', data = {}) {
     return fetch(url, {
         method,
         headers: {

@@ -1,122 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Scheduler</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">  
+  <meta charset="UTF-8">
+  <title>Scheduler</title>
+  <link href="styles.css" rel="stylesheet">
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        referrerpolicy="no-referrer" rel="stylesheet"/>
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="menu">
-            <div class="menu__container">
-                <div class="menu__user">
-                  <img src="assets/avatar.jpg" alt="Tut blyat av netu" class="menu__avatar">
-                  <div class="menu__info">
-                    <h3 class="menu__username">Name Surname</h3>
-                    <p class="menu__position">Project Manager</p>
-                  </div>
-        
-                </div>
-                <div class="menu__buttons">
-                  <div class="menu__button">
-                    <img src="./assets/projects.svg" alt="Projects" class="menu__svg">
-                    <p class="active">Project</p>
-                  </div>
-                  <div class="menu__button">
-                    <img src="./assets/calendar.svg" alt="Projects" class="menu__svg">
-                    <p>Calendar</p>
-                  </div>
-                  <div class="menu__button">
-                    <img src="./assets/reports.svg" alt="Projects" class="menu__svg">
-                    <p>Reports</p>
-                  </div>
-                </div>
-              </div>
+<div class="container">
+  <div class="menu">
+    <div class="menu__container">
+      <div class="menu__user">
+        <img alt="Tut blyat av netu" class="menu__avatar" src="assets/avatar.jpg">
+        <div class="menu__info">
+          <h3 class="menu__username">Name Surname</h3>
+          <p class="menu__position">Project Manager</p>
         </div>
-        <div class="main">
-            <div class="title">Projects</div>
-            <div class="item headings">
-                <div class="name">Project Name</div>
-                <div class="activate">Activate</div>
-                <div class="status">Status</div>
-                <div class="date">Creation Date</div>
-                <div class="tasks">Tasks</div>
-                <div class="add">Add tasks</div>
-            </div>
-            <div class="item active">
-                <div class="name">Name of the project</div>
-                <div class="activate"><div>Activate</div></div>
-                <div class="status">Active</div>
-                <div class="date">August 21</div>
-                <div class="tasks">2</div>
-                <div class="add">+ Add tasks</div>
-            </div>
-            <div class="item">
-                <div class="name">Name of the project</div>
-                <div class="activate"><div>Activate</div></div>
-                <div class="status"></div>
-                <div class="date">August 21</div>
-                <div class="tasks">2</div>
-                <div class="add">+ Add tasks</div>
-            </div>
-            <div class="item">
-                <div class="name">Name of the project</div>
-                <div class="activate"><div>Activate</div></div>
-                <div class="status"></div>
-                <div class="date">August 21</div>
-                <div class="tasks">2</div>
-                <div class="add">+ Add tasks</div>
-            </div>
-            <div class="item">
-                <div class="name">Name of the project</div>
-                <div class="activate"><div>Activate</div></div>
-                <div class="status"></div>
-                <div class="date">August 21</div>
-                <div class="tasks">2</div>
-                <div class="add">+ Add tasks</div>
-            </div>
-            <div class="item">
-                <div class="name">Name of the project</div>
-                <div class="activate"><div>Activate</div></div>
-                <div class="status"></div>
-                <div class="date">August 21</div>
-                <div class="tasks">2</div>
-                <div class="add">+ Add tasks</div>
-            </div>
-            <div class="item new">
-                <div class="create"><span></span>Create Project</div>
-            </div>
+
+      </div>
+      <div class="menu__buttons">
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/projects.svg">
+          <p class="active">Project</p>
         </div>
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/calendar.svg">
+          <p>Calendar</p>
+        </div>
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/reports.svg">
+          <p>Reports</p>
+        </div>
+      </div>
     </div>
+  </div>
+
+</div>
 </body>
 <style>
-    * {box-sizing: border-box;}
+    * {
+        box-sizing: border-box;
+    }
 
-    .main {padding:28px;background:#E5E5E5;}
-    .main .title {margin-bottom:18px;font-weight: 600;font-size: 25px;line-height: 30px;color: #000000;}
+    .main {
+        padding: 28px;
+        background: #E5E5E5;
+    }
 
-    .main .item {display:grid;grid-template-columns:repeat(6, minmax(0, 1fr));height:96px;margin-bottom:18px;padding:26px 42px;background: #FFFFFF;box-shadow: -2px -2px 50px -1px rgba(0, 0, 0, 0.03), 2px 2px 50px -1px rgba(0, 0, 0, 0.03);border-radius: 7px;}
-    .main .item > div {display:flex;align-items: center;justify-content: center;font-family:Noto Sans;font-weight: 600;font-size: 20px;line-height: 24px;color: #000000;}
+    .main .title {
+        margin-bottom: 18px;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 30px;
+        color: #000000;
+    }
 
-    .main .item .name {justify-content: flex-start;}
-    .main .item .activate div {width:fit-content;padding:10px 20px;background: #3C4DDB;border-radius: 7px;color: #FFFFFF;}
-    .main .item .status {color:#5AC08F;}
-    .main .item .date {color: rgba(0, 0, 0, 0.5);}
-    .main .item .tasks {color:#3C4DDB;}
-    .main .item .add  {color:#3C4DDB;}
+    .main .item {
+        display: grid;
+        grid-template-columns:repeat(6, minmax(0, 1fr));
+        height: 96px;
+        margin-bottom: 18px;
+        padding: 26px 42px;
+        background: #FFFFFF;
+        box-shadow: -2px -2px 50px -1px rgba(0, 0, 0, 0.03), 2px 2px 50px -1px rgba(0, 0, 0, 0.03);
+        border-radius: 7px;
+    }
 
-    .main .item.active .activate div {display:none}
+    .main .item > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Noto Sans;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #000000;
+    }
 
-    .main .item.headings {height: 56px;padding:16px 42px;}
-    .main .item.headings > div {color: rgba(0, 0, 0, 0.5);}
+    .main .item .name {
+        justify-content: flex-start;
+    }
 
-    .main .item.new {display:flex;justify-content:flex-start;padding:23px 42px;}
-    .main .item.new .create {color:#3C4DDB;}
-    .main .item.new .create span {position:relative;margin-right:48px;width:50px;height:50px;border-radius:50%;background:#3C4DDB}
-    .main .item.new .create span:before {position:absolute;top:15px;left:25px;content:"";display:block;width:2px;height:20px;background:#fff}
-    .main .item.new .create span:after {position:absolute;top:15px;left:25px;transform:rotate(90deg);content:"";display:block;width:2px;height:20px;background:#fff}
+    .main .item .activate div {
+        width: fit-content;
+        padding: 10px 20px;
+        background: #3C4DDB;
+        border-radius: 7px;
+        color: #FFFFFF;
+    }
+
+    .main .item .status {
+        color: #5AC08F;
+    }
+
+    .main .item .date {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .main .item .tasks {
+        color: #3C4DDB;
+    }
+
+    .main .item .add {
+        color: #3C4DDB;
+    }
+
+    .main .item.active .activate div {
+        display: none
+    }
+
+    .main .item.headings {
+        height: 56px;
+        padding: 16px 42px;
+    }
+
+    .main .item.headings > div {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .main .item.new {
+        display: flex;
+        justify-content: flex-start;
+        padding: 23px 42px;
+    }
+
+    .main .item.new .create {
+        color: #3C4DDB;
+    }
+
+    .main .item.new .create span {
+        position: relative;
+        margin-right: 48px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #3C4DDB
+    }
+
+    .main .item.new .create span:before {
+        position: absolute;
+        top: 15px;
+        left: 25px;
+        content: "";
+        display: block;
+        width: 2px;
+        height: 20px;
+        background: #fff
+    }
+
+    .main .item.new .create span:after {
+        position: absolute;
+        top: 15px;
+        left: 25px;
+        transform: rotate(90deg);
+        content: "";
+        display: block;
+        width: 2px;
+        height: 20px;
+        background: #fff
+    }
 
 </style>
 </html>

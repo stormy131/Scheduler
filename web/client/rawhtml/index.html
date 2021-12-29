@@ -3,144 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <title>Scheduler</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link href="styles.css" rel="stylesheet">
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        referrerpolicy="no-referrer" rel="stylesheet"/>
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="menu">
-      <div class="menu__container">
-        <div class="menu__user">
-          <img src="assets/avatar.jpg" alt="Tut blyat av netu" class="menu__avatar">
-          <div class="menu__info">
-            <h3 class="menu__username">Name Surname</h3>
-            <p class="menu__position">Project Manager</p>
-          </div>
-
+<div class="container">
+  <div class="menu">
+    <div class="menu__container">
+      <div class="menu__user">
+        <img alt="Tut blyat av netu" class="menu__avatar" src="assets/avatar.jpg">
+        <div class="menu__info">
+          <h3 class="menu__username">Name Surname</h3>
+          <p class="menu__position">Project Manager</p>
         </div>
-        <div class="menu__buttons">
-          <div class="menu__button">
-            <img src="./assets/projects.svg" alt="Projects" class="menu__svg">
-            <p class="active">Project</p>
-          </div>
-          <div class="menu__button">
-            <img src="./assets/calendar.svg" alt="Projects" class="menu__svg">
-            <p>Calendar</p>
-          </div>
-          <div class="menu__button">
-            <img src="./assets/reports.svg" alt="Projects" class="menu__svg">
-            <p>Reports</p>
-          </div>
+
+      </div>
+      <div class="menu__buttons">
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/projects.svg">
+          <p class="active">Project</p>
+        </div>
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/calendar.svg">
+          <p>Calendar</p>
+        </div>
+        <div class="menu__button">
+          <img alt="Projects" class="menu__svg" src="./assets/reports.svg">
+          <p>Reports</p>
         </div>
       </div>
     </div>
-    <main class="main">
-      <header class="main__header">
-        <div class="header__left">
-          <h3 class="main__heading">Hackaton</h3>
-          <button class="main__edit">Edit</button>
-          <a class="main__projects" href="#"><i class="fas fa-chevron-left" ></i> All projects</a>
-        </div>
-        <div class="header__right">
-          <form action="#">
-            <label>
-              <input type="text" class="main__search" placeholder="Search...">
-            </label>
-            <button class="main__submit-search" type="submit"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-      </header>
-      <div class="main__sort-tasks">
-        <div class="main__sort-tasks__pages">
-          <button class="main__sort-tasks-page">
-            Tasks
-          </button>
-        </div>
-        <div class="main__sort-tasks__buttons">
-          <button class="main__sort-tasks__button">
-            + Create Task
-          </button>
-        </div>
-      </div>
-      <div class="main__tasks">
-        <p class="main__par main__tasks_count"><span class="active">8</span> items in result</p>
-        <div class="main__tasks-body">
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_progress">In progress</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-          </div>
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_progress">In progress</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-          </div>
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_pause"><i class="fas fa-pause"></i> Paused</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-            <div class="main__task__subtasks">
-              <div class="subtask">
-                <h4 class="main__task_progress">In progress</h4>
-                <h4 class="task_title">Какое то злоебучее подзадание</h4>
-                <p class="subtask__date">Feb 14</p>
-              </div>
-              <div class="subtask">
-                <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
-                <h4 class="task_title">Какое то злоебучее подзадание</h4>
-                <p class="subtask__date">Mar 24</p>
-              </div>
-            </div>
-          </div>
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_progress">In progress</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-          </div>
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-          </div>
-          <div class="main__task">
-            <div class="task">
-              <div>
-                <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
-                <h4 class="task_title">Name of any task</h4>
-              </div>
-              <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
-            </div>
-          </div>
-          <div class="create__task">
-            <button class="create__task_button">
-              <i class="fas fa-plus"></i>
-            </button>
-            <p class="create__task__text">Create task</p>
-          </div>
-        </div>
-      </div>
-    </main>
   </div>
+  <main class="main">
+    <header class="main__header">
+      <div class="header__left">
+        <h3 class="main__heading">Hackaton</h3>
+        <button class="main__edit">Edit</button>
+        <a class="main__projects" href="#"><i class="fas fa-chevron-left"></i> All projects</a>
+      </div>
+      <div class="header__right">
+        <form action="#">
+          <label>
+            <input class="main__search" placeholder="Search..." type="text">
+          </label>
+          <button class="main__submit-search" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </header>
+    <div class="main__sort-tasks">
+      <div class="main__sort-tasks__pages">
+        <button class="main__sort-tasks-page">
+          Tasks
+        </button>
+      </div>
+      <div class="main__sort-tasks__buttons">
+        <button class="main__sort-tasks__button">
+          + Create Task
+        </button>
+      </div>
+    </div>
+    <div class="main__tasks">
+      <p class="main__par main__tasks_count"><span class="active">8</span> items in result</p>
+      <div class="main__tasks-body">
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_progress">In progress</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+        </div>
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_progress">In progress</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+        </div>
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_pause"><i class="fas fa-pause"></i> Paused</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+          <div class="main__task__subtasks">
+            <div class="subtask">
+              <h4 class="main__task_progress">In progress</h4>
+              <h4 class="task_title">Какое то злоебучее подзадание</h4>
+              <p class="subtask__date">Feb 14</p>
+            </div>
+            <div class="subtask">
+              <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
+              <h4 class="task_title">Какое то злоебучее подзадание</h4>
+              <p class="subtask__date">Mar 24</p>
+            </div>
+          </div>
+        </div>
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_progress">In progress</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+        </div>
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+        </div>
+        <div class="main__task">
+          <div class="task">
+            <div>
+              <h4 class="main__task_done"><i class="fas fa-check"></i> Done</h4>
+              <h4 class="task_title">Name of any task</h4>
+            </div>
+            <button class="main__task_show-subtask">View Subtasks (2) <i class="fas fa-angle-down"></i></button>
+          </div>
+        </div>
+        <div class="create__task">
+          <button class="create__task_button">
+            <i class="fas fa-plus"></i>
+          </button>
+          <p class="create__task__text">Create task</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
 </body>
 </html>

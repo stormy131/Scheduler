@@ -4,12 +4,12 @@
       <div class="header__left">
         <h3 class="main__heading">{{ project.projectName }}</h3>
         <button class="main__edit" @click="isEdit=true">Edit</button>
-        <a class="main__projects" href="#"><i class="fas fa-chevron-left" ></i> All projects</a>
+        <a class="main__projects" href="#"><i class="fas fa-chevron-left"></i> All projects</a>
       </div>
       <div class="header__right">
         <form action="#">
           <label>
-            <input type="text" class="main__search" placeholder="Search...">
+            <input class="main__search" placeholder="Search..." type="text">
           </label>
           <button class="main__submit-search" type="submit"><i class="fas fa-search"></i></button>
         </form>
@@ -47,6 +47,7 @@
 import request from '../plugins/request'
 import Task from './Task'
 import NewTask from "./NewTask";
+
 export default {
   props: ['project'],
   name: "Project",

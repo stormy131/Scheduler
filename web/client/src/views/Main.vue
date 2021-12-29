@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu user="user" ref="menu"></Menu>
+    <Menu ref="menu" user="user"></Menu>
     <Projects ref="projects"></Projects>
     <div>404 v-else</div>
   </div>
@@ -10,6 +10,7 @@
 import Menu from "../components/Menu";
 import Projects from "../components/Projects";
 import request from "../plugins/request.js"
+
 export default {
   name: "Main",
   components: {

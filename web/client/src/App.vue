@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   name: 'App',
   mounted() {
-    if(!this.$parent.$SSO.loggedin()) {
+    if (!this.$parent.$SSO.loggedin()) {
       this.$parent.$router.push('/auth')
     }
   }
