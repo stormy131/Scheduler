@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import './plugins/sso'
-import VueRouter from 'vue-router';
 import SSO from 'vue-sso'
+import VueRouter from 'vue-router';
 import App from './App.vue';
 import router from './router';
 import axios from 'axios'
@@ -12,12 +11,12 @@ window.axios = axios;
 new Vue({
     render: h => h(App),
     router,
-}).$mount('#app')
+}).$mount('#app');
 
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 Vue.use(SSO, {
     baseURL: '/',
     authEndpoint: '/auth',
     key: 'scheduler'
-})
+});
