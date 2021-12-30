@@ -5,17 +5,17 @@
       <fieldset class="new-task__input">
         <legend>Task</legend>
         <label>
-          <input type="text" placeholder="e.g. Website Design" name="name">
+          <input name="name" placeholder="e.g. Website Design" type="text">
         </label>
-        <input type="radio" name="importance" id="importance">
+        <input id="importance" name="importance" type="radio">
         <label for="importance">importance</label>
-        <input type="radio" name="urgency" id="urgency">
+        <input id="urgency" name="urgency" type="radio">
         <label for="importance">urgency</label>
       </fieldset>
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>
         <label>
-          <input type="date" placeholder="__/__/__">
+          <input placeholder="__/__/__" type="date">
         </label>
       </fieldset>
       <button class="new-task__cancel">Cancel</button>

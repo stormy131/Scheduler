@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Menu user="user" ref="menu"></Menu>
+    <Menu ref="menu" user="user"></Menu>
     <Project ref="project"></Project>
   </div>
 </template>

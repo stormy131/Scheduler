@@ -9,30 +9,30 @@ import Register from "../views/Register";
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/auth',
-    name: 'Login',
-    component: Login,
-  },
-  {
-    path: '/auth/reg',
-    name: 'Register',
-    component: Register
-  },
-  {
-    path: '/projects',
-    name: 'Projects',
-    component: Main
-  },
-  {
-    path: '/project/:id',
-    name: 'Project',
-    component: SingleProject
-  },
+    {
+        path: '/auth',
+        name: 'Login',
+        component: Login,
+    },
+    {
+        path: '/reg',
+        name: 'Register',
+        component: Register
+    },
+    {
+        path: '/projects',
+        name: 'Projects',
+        component: Main
+    },
+    {
+        path: '/project/:id',
+        name: 'Project',
+        component: SingleProject
+    },
 ]
 
 const router = new VueRouter({
-  routes,
+    routes,
 })
 
 export default router

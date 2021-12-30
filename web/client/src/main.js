@@ -10,14 +10,14 @@ Vue.config.productionTip = false;
 window.axios = axios;
 
 new Vue({
-  render: h => h(App),
-  router,
+    render: h => h(App),
+    router,
 }).$mount('#app')
 
 
 Vue.use(VueRouter)
 Vue.use(SSO, {
-  baseURL: '/api',
-  authEndpoint: '/auth',
-  key: 'scheduler'
+    baseURL: '/',
+    authEndpoint: '/auth',
+    key: 'scheduler'
 })

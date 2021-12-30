@@ -7,9 +7,9 @@
       </div>
       <!--<button class="main__task_show-subtask">View Subtasks({{ task.subtasks.count }}}) <i class="fas fa-angle-down"></i></button>-->
     </div>
-<!--    <div class="main__task__subtasks" >
-      <Subtask v-for="item of task.subtasks" :key="item.id" :subtask="item"></Subtask>
-    </div>-->
+    <!--    <div class="main__task__subtasks" >
+          <Subtask v-for="item of task.subtasks" :key="item.id" :subtask="item"></Subtask>
+        </div>-->
   </div>
 </template>
 
