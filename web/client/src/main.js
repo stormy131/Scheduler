@@ -17,7 +17,7 @@ new Vue({
 
 Vue.use(VueRouter)
 Vue.use(SSO, {
-    baseURL: '/api',
+    baseURL: '/',
     authEndpoint: '/auth',
     key: 'scheduler'
 })

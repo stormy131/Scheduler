@@ -9,9 +9,7 @@
 export default {
   name: 'App',
   mounted() {
-    if (!this.$parent.$SSO.loggedin()) {
-      this.$parent.$router.push('/auth')
-    }
+      this.$parent.$router.push('/auth');
   }
 }
 </script>
