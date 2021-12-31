@@ -22,7 +22,7 @@ export default {
   props: ['user'],
   data() {
     return {
-      name: 'Name Surname',
+      name: this.user.name,
       position: 'Project manager'
     }
   },
