@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     submitHandler() {
-      window.axios.post('/auth/reg', {
+     this.$http.post('/auth/reg', {
         email: this.email,
         password: this.password,
         name: `${this.firstName} ${this.lastName}`,

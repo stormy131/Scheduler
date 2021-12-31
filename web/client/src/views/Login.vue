@@ -23,16 +23,16 @@ export default {
   },
   methods: {
     submitHandler() {
-      window.axios.post('/auth', {
+      this.$http.post('/auth', {
         email: this.email,
         password: this.password
       }).then(r => {
         console.log('Success', r);
         localStorage.token = r.data.token;
-        window.authAxios = window.axios.create({
+        /*window.authAxios = window.axios.create({
           baseURL: '/',
           'Authorization': `Bearer ${r.data.token}`
-        });
+        });*/
         this.$router.push('/projects');
       });
     }
