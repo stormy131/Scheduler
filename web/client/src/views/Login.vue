@@ -3,7 +3,7 @@
     <div class="welcome">Welcome</div>
     <div class="heading">Sign in</div>
     <div class="subheading">New user?
-      <router-link :to="{ path: '/register' }">Create an account.</router-link>
+      <router-link :to="{ path: '/auth/reg' }">Create an account.</router-link>
     </div>
     <label>Email address <input v-model.lazy="email" name="email" type="text"></label>
     <label>Password <input v-model.lazy="password" name="password" type="password"></label>
@@ -23,7 +23,10 @@ export default {
   },
   methods: {
     submitHandler() {
-      this.$SSO.login(this.email, this.password).then(r => {
+      window.axios.post('/auth', {
+        email: this.email,
+        password: this.password
+      }).then(r => {
         console.log('Success', r);
         this.$router.push('/projects');
       });
