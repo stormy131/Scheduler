@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import SSO from 'vue-sso'
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import router from './router';
@@ -15,8 +14,3 @@ new Vue({
 
 
 Vue.use(VueRouter);
-Vue.use(SSO, {
-    baseURL: '/',
-    authEndpoint: '/auth',
-    key: 'scheduler'
-});

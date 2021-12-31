@@ -9,10 +9,11 @@
 export default {
   name: 'App',
   mounted() {
-      this.$parent.$router.push('/auth');
+      this.$parent.$router.push('/login');
   }
 }
 </script>
 <style>
 @import './assets/styles.css';
+
 </style>
