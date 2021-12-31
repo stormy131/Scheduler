@@ -29,16 +29,14 @@ export default {
   },
   methods: {
     submitHandler() {
-     this.$http.post('/auth/reg', {
+      let data = {
+        name: `${this.firstName} ${this.lastName}`,
         email: this.email,
         password: this.password,
-        name: `${this.firstName} ${this.lastName}`,
-      }).then(r => {
-        console.log(r);
-        alert('Register successful, proceed to login');
-        this.$router.push('/auth');
-      });
-
+      };
+      this.$store.dispatch('register', data)
+        .then(() => this.$router.push('/auth'))
+        .catch(err => console.log(err));
     }
   }
 }
