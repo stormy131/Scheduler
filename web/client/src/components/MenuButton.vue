@@ -8,15 +8,15 @@
 <script>
 export default {
   name: "MenuButton",
-  props: ['href, name'],
+  props: ['href', 'name'],
   computed: {
     src() {
-      return `../assets/${this.name.toLowerCase()}.svg`
+      return require(`../assets/${this.name.toLowerCase()}.svg`)
     }
   },
   methods: {
     clickHandler() {
-      this.$parent.$parent.$router.push(this.href);
+      this.$parent.$parent.$router.push('/' + this.href);
     }
   }
 }
