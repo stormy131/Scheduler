@@ -23,10 +23,8 @@ export default {
   },
   mounted() {
     this.$http.get('/projects').then(resp => {
-      console.log(resp);
       this.projects = [...resp.data];
     })
-    .catch(err => console.log(err));
   }
 }
 </script>

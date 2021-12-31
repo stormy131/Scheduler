@@ -31,7 +31,7 @@ export default {
       };
       this.$store.dispatch('login', data)
         .then(() => this.$router.push('/projects'))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     }
   }
 };

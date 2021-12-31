@@ -11,13 +11,12 @@ Vue.prototype.$store = store;
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token');
 if (token) {
-    Vue.prototype.$http.defaults.headers.common['Authorization'] = token;
+  Vue.prototype.$http.defaults.headers.common.auth = token;
 }
 
-
 new Vue({
-    render: h => h(App),
-    router,
+  render: h => h(App),
+  router
 }).$mount('#app');
 
 Vue.use(VueRouter);

@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-      this.user = this.$store.state.user;
+    this.user = this.$store.getters.user;
   },
 }
 </script>
