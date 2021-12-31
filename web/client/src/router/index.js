@@ -10,12 +10,12 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/login',
+        path: '/auth',
         name: 'Login',
         component: Login,
     },
     {
-        path: '/register',
+        path: '/auth/reg',
         name: 'Register',
         component: Register
     },
@@ -25,7 +25,7 @@ const routes = [
         component: Main
     },
     {
-        path: '/project/:id',
+        path: '/projects/:id',
         name: 'Project',
         component: SingleProject
     },
