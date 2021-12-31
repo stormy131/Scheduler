@@ -12,5 +12,4 @@ new Vue({
     router,
 }).$mount('#app');
 
-
 Vue.use(VueRouter);
