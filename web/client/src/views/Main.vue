@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <Menu ref="menu" user="user"></Menu>
     <Projects ref="projects"></Projects>
-    <div>404 v-else</div>
   </div>
 </template>
 

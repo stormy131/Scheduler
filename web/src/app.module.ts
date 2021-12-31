@@ -20,7 +20,7 @@ require('dotenv').config();
     }),
     AuthModule, TasksModule, AccountsModule, ProjectsModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client', 'public')
+      rootPath: join(__dirname, '..', 'client', 'dist')
     }),
   ],
   controllers: [AppController],

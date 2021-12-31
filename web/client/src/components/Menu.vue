@@ -7,10 +7,10 @@
           <h3 class="menu__username">{{ name }}</h3>
           <p class="menu__position">{{ position }}</p>
         </div>
-        <MenuButton href="/reports" name="Projects"></MenuButton>
-        <MenuButton href="/calendar" name="Calendar"></MenuButton>
-        <MenuButton href="/reports" name="Reports"></MenuButton>
       </div>
+      <MenuButton href="projects" name="Projects"></MenuButton>
+      <MenuButton href="calendar" name="Calendar"></MenuButton>
+      <MenuButton href="reports" name="Reports"></MenuButton>
     </div>
   </div>
 </template>

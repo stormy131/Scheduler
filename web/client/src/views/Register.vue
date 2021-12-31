@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import request from "../plugins/request";
 
 export default {
   name: "Register",
@@ -30,12 +29,16 @@ export default {
   },
   methods: {
     submitHandler() {
-      request('/auth/reg', 'POST', {
+      window.axios.post('/auth/reg', {
         email: this.email,
         password: this.password,
         name: `${this.firstName} ${this.lastName}`,
-      })
-      this.$parent.$router.push('/auth');
+      }).then(r => {
+        console.log(r);
+        alert('Register successful, proceed to login');
+        this.$router.push('/login');
+      });
+
     }
   }
 }

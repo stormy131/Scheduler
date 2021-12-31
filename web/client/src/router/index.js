@@ -6,7 +6,7 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -15,7 +15,7 @@ const routes = [
         component: Login,
     },
     {
-        path: '/reg',
+        path: '/auth/reg',
         name: 'Register',
         component: Register
     },
@@ -25,14 +25,14 @@ const routes = [
         component: Main
     },
     {
-        path: '/project/:id',
+        path: '/projects/:id',
         name: 'Project',
         component: SingleProject
     },
-]
+];
 
 const router = new VueRouter({
     routes,
-})
+});
 
-export default router
+export default router;
