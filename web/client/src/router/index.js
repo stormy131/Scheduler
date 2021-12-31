@@ -22,12 +22,18 @@ const routes = [
     {
         path: '/projects',
         name: 'Projects',
-        component: Main
+        component: Main,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/projects/:id',
         name: 'Project',
-        component: SingleProject
+        component: SingleProject,
+        meta: {
+            requiresAuth: true
+        }
     },
 ];
 
