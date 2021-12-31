@@ -9,11 +9,10 @@
 </template>
 
 <script>
-import ProjectItem from './ProjectItem'
-import request from '../plugins/request'
+import ProjectItem from './ProjectItem';
 
 export default {
-  name: "Projects",
+  name: 'Projects',
   data() {
     return {
       projects: []
@@ -23,9 +22,11 @@ export default {
     ProjectItem
   },
   mounted() {
-    request('/api/projects').then(data => {
-      this.projects = data;
+    this.$http.get('/projects').then(resp => {
+      console.log(resp);
+      this.projects = [...resp.data];
     })
+    .catch(err => console.log(err));
   }
 }
 </script>
