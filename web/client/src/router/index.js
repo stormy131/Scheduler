@@ -6,7 +6,7 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -29,10 +29,10 @@ const routes = [
         name: 'Project',
         component: SingleProject
     },
-]
+];
 
 const router = new VueRouter({
     routes,
-})
+});
 
-export default router
+export default router;
