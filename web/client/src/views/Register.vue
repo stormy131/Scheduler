@@ -36,7 +36,7 @@ export default {
       }).then(r => {
         console.log(r);
         alert('Register successful, proceed to login');
-        this.$router.push('/login');
+        this.$router.push('/auth');
       });
 
     }

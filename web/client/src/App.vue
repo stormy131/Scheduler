@@ -9,7 +9,7 @@
 export default {
   name: 'App',
   mounted() {
-    this.$parent.$router.push('/login');
+    this.$parent.$router.push('/auth');
   }
 }
 </script>
