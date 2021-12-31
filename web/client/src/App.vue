@@ -12,7 +12,7 @@ export default {
     this.$http.interceptors.response.use(null, (err) => {
       return new Promise(() => {
         console.log(err);
-        if (err.status === 401 && err.config) {
+        if (err.status === 403) {
           this.$store.dispatch("logout");
         }
         throw err;
