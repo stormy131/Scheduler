@@ -23,18 +23,15 @@ export default {
   },
   methods: {
     submitHandler() {
-      this.$http.post('/auth', {
-        email: this.email,
-        password: this.password
-      }).then(r => {
-        console.log('Success', r);
-        localStorage.token = r.data.token;
-        /*window.authAxios = window.axios.create({
-          baseURL: '/',
-          'Authorization': `Bearer ${r.data.token}`
-        });*/
-        this.$router.push('/projects');
-      });
+      let email = this.email;
+      let password = this.password;
+      const data = {
+        email,
+        password
+      };
+      this.$store.dispatch('login', data)
+        .then(() => this.$router.push('/projects'))
+        .catch(err => console.log(err))
     }
   }
 };
