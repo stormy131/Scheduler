@@ -8,8 +8,16 @@
 
 export default {
   name: 'App',
-  mounted() {
-    this.$parent.$router.push('/auth');
+  created: function () {
+    this.$http.interceptors.response.use(null, (err) => {
+      return new Promise(() => {
+        console.log(err);
+        if (err.status === 401 && err.config) {
+          this.$store.dispatch("logout");
+        }
+        throw err;
+      });
+    });
   }
 }
 </script>
