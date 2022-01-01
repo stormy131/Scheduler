@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    request('/api/tasks', 'GET', {id: this.$root.$router.params.id}).then(data => {
+    request('/api/tasks', 'GET', {id: this.$router.params.id}).then(data => {
       this.tasks = data;
     })
   }
