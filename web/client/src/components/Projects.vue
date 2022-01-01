@@ -2,6 +2,7 @@
   <div class="main">
     <div class="title">Projects</div>
     <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
+    <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new">
       <div class="create"><span></span>Create Project</div>
     </div>
@@ -24,6 +25,7 @@ export default {
   mounted() {
     this.$http.get('/projects').then(resp => {
       this.projects = [...resp.data];
+      console.log(resp.data);
     })
   }
 }
