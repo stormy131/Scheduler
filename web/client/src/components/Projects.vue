@@ -2,6 +2,7 @@
   <div class="main">
     <div class="title">Projects</div>
     <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
+    <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new">
       <div class="create"><span></span>Create Project</div>
     </div>
@@ -9,11 +10,10 @@
 </template>
 
 <script>
-import ProjectItem from './ProjectItem'
-import request from '../plugins/request'
+import ProjectItem from './ProjectItem';
 
 export default {
-  name: "Projects",
+  name: 'Projects',
   data() {
     return {
       projects: []
@@ -23,14 +23,17 @@ export default {
     ProjectItem
   },
   mounted() {
-    request('/api/projects').then(data => {
-      this.projects = data;
+    this.$http.get('/projects').then(resp => {
+      this.projects = [...resp.data];
+      console.log(resp.data);
     })
   }
 }
 </script>
 
 <style scoped>
+@import '../assets/styles.css';
+
 * {
   box-sizing: border-box;
 }
@@ -63,15 +66,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Noto Sans, serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
   color: #000000;
-}
-
-.main .item .name {
-  justify-content: flex-start;
 }
 
 .main .item .activate div {
@@ -82,29 +80,8 @@ export default {
   color: #FFFFFF;
 }
 
-.main .item .status {
-  color: #5AC08F;
-}
-
-.main .item .date {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.main .item .tasks {
-  color: #3C4DDB;
-}
-
-.main .item .add {
-  color: #3C4DDB;
-}
-
 .main .item.active .activate div {
   display: none
-}
-
-.main .item.headings {
-  height: 56px;
-  padding: 16px 42px;
 }
 
 .main .item.headings > div {

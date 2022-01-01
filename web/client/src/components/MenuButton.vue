@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     clickHandler() {
-      this.$parent.$parent.$router.push('/' + this.href);
+      this.$router.push('/' + this.href);
     }
   }
 }
