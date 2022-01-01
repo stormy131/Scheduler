@@ -29,9 +29,5 @@ export default {
   components: {
     MenuButton
   },
-  mounted() {
-    console.log(this.user);
-
-  }
 }
 </script>
