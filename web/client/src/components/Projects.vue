@@ -98,6 +98,10 @@ export default {
   color: #3C4DDB;
 }
 
+.create {
+  cursor: pointer;
+}
+
 .main .item.new .create span {
   position: relative;
   margin-right: 48px;
