@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style scoped>
+@import '../assets/styles.css';
+
 * {
   box-sizing: border-box;
 }
@@ -62,15 +64,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Noto Sans, serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
   color: #000000;
-}
-
-.main .item .name {
-  justify-content: flex-start;
 }
 
 .main .item .activate div {
@@ -81,29 +78,8 @@ export default {
   color: #FFFFFF;
 }
 
-.main .item .status {
-  color: #5AC08F;
-}
-
-.main .item .date {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.main .item .tasks {
-  color: #3C4DDB;
-}
-
-.main .item .add {
-  color: #3C4DDB;
-}
-
 .main .item.active .activate div {
   display: none
-}
-
-.main .item.headings {
-  height: 56px;
-  padding: 16px 42px;
 }
 
 .main .item.headings > div {

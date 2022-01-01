@@ -4,7 +4,7 @@
       <div class="menu__user">
         <img alt="Tut blyat av netu" class="menu__avatar" src="../assets/avatar.jpg">
         <div class="menu__info">
-          <h3 class="menu__username">{{ name }}</h3>
+          <h3 class="menu__username">{{ username }}</h3>
           <p class="menu__position">{{ position }}</p>
         </div>
       </div>
@@ -22,7 +22,7 @@ export default {
   props: ['user'],
   data() {
     return {
-      name: this.user.name,
+      username: this.user.name,
       position: 'Project manager'
     }
   },
@@ -31,6 +31,7 @@ export default {
   },
   mounted() {
     console.log(this.user);
+
   }
 }
 </script>

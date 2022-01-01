@@ -40,7 +40,7 @@ export default new Vuex.Store({
             const token = r.data.token;
             const user = r.data.user;
             localStorage.setItem('token', token);
-            axios.defaults.headers.common.auth = token;
+            axios.defaults.headers.common.usertoken = token;
             commit('auth_success', { token, user });
             resolve(r);
           })
@@ -67,7 +67,7 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         commit('logout');
         localStorage.removeItem('token');
-        delete axios.defaults.headers.auth;
+        delete axios.defaults.headers.usertoken;
         resolve();
       });
     }
