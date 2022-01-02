@@ -11,6 +11,7 @@
       <MenuButton href="projects" name="Projects"></MenuButton>
       <MenuButton href="calendar" name="Calendar"></MenuButton>
       <MenuButton href="reports" name="Reports"></MenuButton>
+      <div class='menu__logout'><i class="fas fa-sign-out-alt" @click='logout'></i> Logout</div>
     </div>
   </div>
 </template>
@@ -27,6 +28,12 @@ export default {
       username: this.user.name,
       position: 'Project manager',
     };
+  },
+  methods: {
+    logout() {
+      this.$store.commit('logout');
+      this.$router.push('/');
+    }
   },
   components: {
     MenuButton,
