@@ -43,7 +43,9 @@ export default {
         importance: this.importance,
         urgency: this.urgency,
         deadline: this.deadline,
-        fromProject: this.$parent
+        fromProject: this.$parent.newId
+      }).then(r => {
+
       })
     }
   }

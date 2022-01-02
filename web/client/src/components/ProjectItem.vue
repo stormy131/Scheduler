@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     click() {
-      this.$emit('addTask');
+      this.$emit('addTask', this.project.id);
     }
   }
 }

@@ -9,7 +9,7 @@
       <div class="tasks">Subtasks</div>
       <div class="add">Add subtasks</div>
     </div>
-    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask"></ProjectItem>
+    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask($event)"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
@@ -42,7 +42,8 @@ export default {
       projects: [],
       showEdit: false,
       taskShow: false,
-      newName: ''
+      newName: '',
+      newId: null,
     }
   },
   components: {
@@ -71,8 +72,9 @@ export default {
     show() {
       this.showEdit = !this.showEdit;
     },
-    showTask() {
+    showTask(id) {
       this.taskShow = !this.taskShow;
+      this.newId = id;
     }
   },
   mounted() {
