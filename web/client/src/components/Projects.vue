@@ -9,7 +9,7 @@
       <div class="tasks">Subtasks</div>
       <div class="add">Add subtasks</div>
     </div>
-    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project"></ProjectItem>
+    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
@@ -27,11 +27,13 @@
         </div>
       </form>
     </div>
+    <NewTask v-show="taskShow"></NewTask>
   </div>
 </template>
 
 <script>
 import ProjectItem from './ProjectItem';
+import NewTask from "./NewTask";
 
 export default {
   name: 'Projects',
@@ -39,11 +41,13 @@ export default {
     return {
       projects: [],
       showEdit: false,
+      taskShow: false,
       newName: ''
     }
   },
   components: {
-    ProjectItem
+    ProjectItem,
+    NewTask
   },
   methods: {
     newHandler() {
@@ -65,7 +69,10 @@ export default {
         .catch(e => console.log(e));
     },
     show() {
-      this.showEdit = !this.showEdit
+      this.showEdit = !this.showEdit;
+    },
+    showTask() {
+      this.taskShow = !this.taskShow;
     }
   },
   mounted() {
