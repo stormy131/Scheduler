@@ -4,6 +4,7 @@ import { RegistrationInterface } from './interfaces/register.interface';
 import { AccountsRepo } from '../database/repository/accounts.repository';
 import { TokensRepo } from '../database/repository/tokens.repository';
 import { JwtService } from '@nestjs/jwt';
+import tryWrapper from "../utils/wrapper";
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ export class AuthService {
   async postLogin(loginData: LoginInterface): Promise<any> {
     const res = await this.accountRepo.find(loginData);
 
-    if (!res) return 'Invalid user data';
+    if (!res) return false;
 
     const token = this.jwtService.sign(
       { name: res.name, id: res.id },
@@ -39,22 +40,8 @@ export class AuthService {
     };
   }
 
-  async postReg(newAccount: RegistrationInterface): Promise<string> {
-    const alreadyExists = await this.accountRepo.check(newAccount);
-
-    if (alreadyExists) {
-      return 'Provied email or username is already in use';
-    }
-
-    await this.accountRepo.create(newAccount);
-    return 'created, now go to login';
-  }
-
-  async refreshToken(oldToken: string, token: string) {
-    const res = await this.tokenRepo.findOne(token);
-    const data = this.jwtService.decode(oldToken);
-
-    if (res) return this.jwtService.sign(data, { expiresIn: '1h' });
+  async postReg(newAccount: RegistrationInterface): Promise<boolean> {
+    return await tryWrapper(this.accountRepo.create, newAccount);
   }
 
   async googleLogin(

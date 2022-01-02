@@ -1,40 +1,21 @@
 import { Injectable } from "@nestjs/common";
 import { TasksRepo } from "../database/repository/tasks.repository";
 import { Task, UpdateTask } from "./interfaces/task.interface";
+import tryWrapper from "../utils/wrapper";
 
 @Injectable()
 export class TasksService{
     constructor(private readonly tasksRepo: TasksRepo){}
 
-    async createTask(task: Task) {
-        return await this.tasksRepo.create(task);
+    async createTask(task: Task): Promise<boolean> {
+        return await tryWrapper(this.tasksRepo.create, task);
     }
 
-    async getTask(id: number) : Promise<any> {
-        const res = await this.tasksRepo.find(id);
-
-        if (!res) {
-            return 'task not found';
-        }
-
-        return res;
+    async updateTask(id: number, newValues: UpdateTask): Promise<boolean> {
+        return await tryWrapper(this.tasksRepo.update, id, newValues);
     }
 
-    async getAllTasks(data: {fromProject: number}) : Promise<any> {
-        const res = await this.tasksRepo.findAll(data.fromProject);
-
-        if (!res) {
-            return 'no tasks found';
-        }
-
-        return res;
-    }
-
-    async updateTask(id: number, newValues: UpdateTask) {
-        return await this.tasksRepo.update(id, newValues);
-    }
-
-    async deleteTask(id: number) {
-        return await this.tasksRepo.delete(id);
+    async deleteTask(id: number): Promise<boolean> {
+        return await tryWrapper(this.tasksRepo.delete, id);
     }
 }
