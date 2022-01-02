@@ -55,7 +55,7 @@ export default {
         this.projects.push({
           name: this.newName,
           id: this.projects.length - 1,
-          createdAt: new Date().toDateString(),
+          createdAt: new Date().getDay() + new Date().getMonth(),
           active: false,
           tasks: [].length
         });
