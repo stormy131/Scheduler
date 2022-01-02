@@ -16,7 +16,7 @@ export default new Vuex.Store({
     auth_success(state, payload) {
       state.status = 'success';
       state.token = payload.token;
-      state.user = payload.user;
+      state.user = JSON.parse(localStorage.getItem('user')) || payload.user;
     },
     auth_error(state) {
       state.status = 'error';
@@ -24,7 +24,7 @@ export default new Vuex.Store({
     logout(state) {
       state.status = '';
       state.token = '';
-      state.user = {};
+      state.user = '{}';
     },
   },
   actions: {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
         const token = r.data.token;
         const responseUser = r.data.user;
         localStorage.setItem('token', token);
-        localStorage.setItem('user', responseUser);
+        localStorage.setItem('user', JSON.stringify(responseUser));
         axios.defaults.headers.common.usertoken = token;
         commit('auth_success', { token, responseUser });
         return r;
@@ -58,11 +58,11 @@ export default new Vuex.Store({
         method: 'POST',
       }).catch((err) => console.log(err));
     },
-    logout({ commit }) {
+    async logout({ commit }) {
       commit('logout');
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      delete axios.defaults.headers.usertoken;
+      return delete axios.defaults.headers.usertoken;
     },
   },
   getters: {

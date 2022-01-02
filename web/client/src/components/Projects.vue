@@ -3,14 +3,20 @@
     <div class="title">Projects</div>
     <div class="item">
       <div class="name">Project name</div>
-      <div class="activate"></div>
+      <div></div>
       <div class="status">Status</div>
       <div class="date">Creation date</div>
       <div class="tasks">Subtasks</div>
       <div class="add">Add subtasks</div>
     </div>
-    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask($event)"></ProjectItem>
-    <h3 v-show="projects.length < 1">No projects</h3>
+    <ProjectItem
+      v-for="project of projects"
+      :key="project.id"
+      v-bind:project="project"
+      ref="projects"
+      @addTask="showTask($event)"
+      @changeStatus="changeStatus($event)">
+    </ProjectItem>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
     </div>
@@ -55,14 +61,14 @@ export default {
       this.$http
         .post('/projects', {
           name: this.newName,
-          id: this.projects.length - 1,
+          id: this.projects.length,
           user: this.$store.getters.user,
         })
         .then(() => {
           this.projects.push({
             name: this.newName,
-            id: this.projects.length - 1,
-            createdAt: new Date().getDay() + new Date().getMonth(),
+            id: this.projects.length,
+            createdAt: `${new Date().getUTCDate()} ${new Date().toLocaleString('default', { month: 'long' })}`,
             active: false,
             tasks: [].length,
           });
@@ -78,11 +84,19 @@ export default {
       this.taskShow = !this.taskShow;
       this.newId = id;
     },
+    changeStatus(id) {
+      this.projects.forEach(item => {
+        if(item.active === true && item.id !== id) item.active = !item.active
+      });
+    }
   },
   mounted() {
     this.$http.get('/projects').then((resp) => {
-      this.projects = [...resp.data];
-      console.log(resp.data);
+      this.projects = resp.data.map(proj => {
+        const date = new Date(proj.createdAt);
+        proj.createdAt = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'long' })}`;
+        return proj;
+      });
     });
   },
 };
@@ -90,108 +104,4 @@ export default {
 
 <style scoped>
 @import '../assets/styles.css';
-
-* {
-  box-sizing: border-box;
-}
-
-.main {
-  padding: 28px;
-  background: #e5e5e5;
-}
-
-.main .title {
-  margin-bottom: 18px;
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 30px;
-  color: #000000;
-}
-
-.main .item {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  height: 96px;
-  margin-bottom: 18px;
-  padding: 26px 42px;
-  background: #ffffff;
-  box-shadow: -2px -2px 50px -1px rgba(0, 0, 0, 0.03), 2px 2px 50px -1px rgba(0, 0, 0, 0.03);
-  border-radius: 7px;
-}
-
-.main .item > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: #000000;
-}
-
-.main .item .activate div {
-  width: fit-content;
-  padding: 10px 20px;
-  background: #3c4ddb;
-  border-radius: 7px;
-  color: #ffffff;
-}
-
-.main .item.active .activate div {
-  display: none;
-}
-
-.main .item.headings > div {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.main .item.new {
-  display: flex;
-  justify-content: flex-start;
-  padding: 23px 42px;
-}
-
-.main .item.new .create {
-  color: #3c4ddb;
-}
-
-.create div span {
-  cursor: pointer;
-}
-
-.create {
-  cursor: pointer;
-}
-
-.main .item.new .create span {
-  position: relative;
-  margin-right: 48px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #3c4ddb;
-}
-
-.main .item.new .create span:before {
-  position: absolute;
-  top: 15px;
-  left: 25px;
-  content: '';
-  display: block;
-  width: 2px;
-  height: 20px;
-  background: #fff;
-}
-
-.main .item.new .create span:after {
-  position: absolute;
-  top: 15px;
-  left: 25px;
-  transform: rotate(90deg);
-  content: '';
-  display: block;
-  width: 2px;
-  height: 20px;
-  background: #fff;
-}
 </style>

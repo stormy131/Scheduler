@@ -7,11 +7,13 @@
         <label>
           <input name="name" placeholder="e.g. Website Design" type="text" required v-model.lazy="name" />
         </label>
-        <input id="importance" name="importance" type="checkbox" v-model.lazy="importance" />
-        <label for="importance">importance</label>
-        <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency" />
-        <label for="importance">urgency</label>
       </fieldset>
+      <div>
+        <input id="importance" name="importance" type="checkbox" v-model.lazy="importance" />
+        <label for="importance">importance</label><br>
+        <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency" />
+        <label for="importance">urgency</label><br>
+      </div>
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>
         <label>
@@ -19,7 +21,7 @@
         </label>
       </fieldset>
       <div class="new-task__buttons">
-        <button class="new-task__cancel">Cancel</button>
+        <button class="new-task__cancel" @click="$emit('created')">Cancel</button>
         <button class="new-task__submit" type="submit">Create</button>
       </div>
     </form>

@@ -4,6 +4,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Axios from 'axios';
+import '@fortawesome/fontawesome-free/js/all.min.js';
 
 Vue.config.productionTip = false;
 
@@ -13,7 +14,8 @@ const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
 if (token && user) {
   Vue.prototype.$http.defaults.headers.common.usertoken = token;
-  store.commit('auth_success', { token, user });
+  const res = JSON.parse(user);
+  store.commit('auth_success', { token, res });
 }
 
 new Vue({
