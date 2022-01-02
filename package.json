@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npm run --prefix web/client build && npm run --prefix web build && npm run --prefix web start"
+    "start": "npm run --prefix web/client build && npm run --prefix web build && npm run --prefix web start",
+    "start:dev": "npm run --prefix web/client build && npm run --prefix web start:dev"
   },
   "repository": {
     "type": "git",
