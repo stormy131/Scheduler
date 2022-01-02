@@ -4,11 +4,11 @@
 
 ### Starting the app
 
-####Installing the dependencies
+#### Installing the dependencies
 ```bash
 npm --prefix web install && npm --prefix web/client install
 ```
-####Starting the application
+#### Starting the application
 ```bash
 npm run start 
 ```
@@ -26,16 +26,16 @@ CLIENT_ID=[Your google client id ]
 CLENT_SECRET=[Your secret google]
 ```
 
-###Used stack
+### Used stack
 * Platform - NodeJS
 * Backend - NestJS 
 * Database - PostgreSQL 14 
 * Frontend - VueJS & Vuex
 
-###Contributing
+### Contributing
 If you have any ideas for improving the program, feel free to add new Issues on the Issues page.
 
 You can also create Pull Requests on the Pull Requests page.
 
-###License
+### License
 This program is distributed under an MIT License.
