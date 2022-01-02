@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <div class="name">{{ project.name }}</div>
+    <div class="name"><router-link :to="{ path: `/projects/${project.id}` }">{{ project.name }}</router-link></div>
     <div class='activate__container'>
       <button class="activate" v-show="!(project.active === true)" @click="updateStatus">Activate</button>
     </div>
