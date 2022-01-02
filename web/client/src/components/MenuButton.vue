@@ -10,7 +10,7 @@ export default {
   name: 'MenuButton',
   props: {
     href: String,
-    name: String
+    name: String,
   },
   computed: {
     src() {

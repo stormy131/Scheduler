@@ -48,7 +48,7 @@ import NewTask from './NewTask';
 
 export default {
   props: {
-    project: Object
+    project: Object,
   },
   name: 'Project',
   data() {

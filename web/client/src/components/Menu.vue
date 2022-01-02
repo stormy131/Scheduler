@@ -20,7 +20,7 @@ import MenuButton from './MenuButton';
 export default {
   name: 'Menu',
   props: {
-    user: Object
+    user: Object,
   },
   data() {
     return {
