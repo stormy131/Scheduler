@@ -9,11 +9,14 @@
     <div class="new-project" v-show="showEdit">
         <h3>Create a new project</h3>
       <form action="#" class="new-project__form" @submit.prevent="newHandler">
-        <label class="new-project__label">
-          Name
-          <input type="text" class="new-project__input" placeholder="e.g. Website Design">
-        </label>
-        <button type="submit" class="new-project__submit">Create</button>
+        <div>
+          <label for="name" class="new-project__label">Name</label><br>
+          <input id="name" type="text" class="new-project__input" placeholder="e.g. Website Design" v-model.lazy="newName">
+        </div>
+        <div class="new-project__buttons">
+          <button class="new-project__close">Close</button>
+          <button type="submit" class="new-project__submit">Create</button>
+        </div>
       </form>
     </div>
   </div>
@@ -27,7 +30,8 @@ export default {
   data() {
     return {
       projects: [],
-      showEdit: false
+      showEdit: false,
+      newName: ''
     }
   },
   components: {
@@ -115,6 +119,10 @@ export default {
 }
 
 .create div span {
+  cursor: pointer;
+}
+
+.create {
   cursor: pointer;
 }
 
