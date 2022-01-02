@@ -259,7 +259,7 @@ input:focus
     display: flex
     align-items: center
 
-.new-project
+.new-project, .new-task
   position: absolute
   top: 25vh
   left: 70vh
@@ -320,6 +320,22 @@ input:focus
   border-radius: 7px
   background-color: $button-color
   color: white
+
+.new-task
+  form
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+
+  input:not([type=checkbox]):not([type=radio])
+    margin-top: 20px
+    background: none
+    border: 1px solid rgba(60, 77, 219, 1)
+    padding: 5px
+    width: 286px
+    height: 42px
+
 
 
 
