@@ -2,7 +2,7 @@
   <div class="menu">
     <div class="menu__container">
       <div class="menu__user">
-        <img alt="Tut blyat av netu" class="menu__avatar" src="../assets/avatar.jpg">
+        <img alt="Tut blyat av netu" class="menu__avatar" src="../assets/avatar.jpg" />
         <div class="menu__info">
           <h3 class="menu__username">{{ username }}</h3>
           <p class="menu__position">{{ position }}</p>
@@ -15,19 +15,21 @@
   </div>
 </template>
 <script>
-import MenuButton from './MenuButton'
+import MenuButton from './MenuButton';
 
 export default {
   name: 'Menu',
-  props: ['user'],
+  props: {
+    user: Object
+  },
   data() {
     return {
       username: this.user.name,
-      position: 'Project manager'
-    }
+      position: 'Project manager',
+    };
   },
   components: {
-    MenuButton
+    MenuButton,
   },
-}
+};
 </script>

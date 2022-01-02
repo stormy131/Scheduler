@@ -1,34 +1,91 @@
 <template>
   <div class="main">
     <div class="title">Projects</div>
-    <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
+    <div class="item">
+      <div class="name">Project name</div>
+      <div class="activate"></div>
+      <div class="status">Status</div>
+      <div class="date">Creation date</div>
+      <div class="tasks">Subtasks</div>
+      <div class="add">Add subtasks</div>
+    </div>
+    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask($event)"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
-    <div class="item new">
+    <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
     </div>
+    <div class="new-project" v-show="showEdit">
+      <h3>Create a new project</h3>
+      <form action="#" class="new-project__form" @submit.prevent="newHandler">
+        <div>
+          <label for="name" class="new-project__label">Name</label><br />
+          <input id="name" type="text" class="new-project__input" placeholder="e.g. Website Design" v-model.lazy="newName" required />
+        </div>
+        <div class="new-project__buttons">
+          <button class="new-project__close" @click="show">Close</button>
+          <button type="submit" class="new-project__submit">Create</button>
+        </div>
+      </form>
+    </div>
+    <NewTask v-show="taskShow" @created="showTask"></NewTask>
   </div>
 </template>
 
 <script>
 import ProjectItem from './ProjectItem';
+import NewTask from './NewTask';
 
 export default {
   name: 'Projects',
   data() {
     return {
-      projects: []
-    }
+      projects: [],
+      showEdit: false,
+      taskShow: false,
+      newName: '',
+      newId: null,
+    };
   },
   components: {
-    ProjectItem
+    ProjectItem,
+    NewTask,
+  },
+  methods: {
+    newHandler() {
+      this.$http
+        .post('/projects', {
+          name: this.newName,
+          id: this.projects.length - 1,
+          user: this.$store.getters.user,
+        })
+        .then(() => {
+          this.projects.push({
+            name: this.newName,
+            id: this.projects.length - 1,
+            createdAt: new Date().getDay() + new Date().getMonth(),
+            active: false,
+            tasks: [].length,
+          });
+          this.show();
+          this.newName = '';
+        })
+        .catch((e) => console.log(e));
+    },
+    show() {
+      this.showEdit = !this.showEdit;
+    },
+    showTask(id) {
+      this.taskShow = !this.taskShow;
+      this.newId = id;
+    },
   },
   mounted() {
-    this.$http.get('/projects').then(resp => {
+    this.$http.get('/projects').then((resp) => {
       this.projects = [...resp.data];
       console.log(resp.data);
-    })
-  }
-}
+    });
+  },
+};
 </script>
 
 <style scoped>
@@ -40,7 +97,7 @@ export default {
 
 .main {
   padding: 28px;
-  background: #E5E5E5;
+  background: #e5e5e5;
 }
 
 .main .title {
@@ -53,11 +110,11 @@ export default {
 
 .main .item {
   display: grid;
-  grid-template-columns:repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   height: 96px;
   margin-bottom: 18px;
   padding: 26px 42px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: -2px -2px 50px -1px rgba(0, 0, 0, 0.03), 2px 2px 50px -1px rgba(0, 0, 0, 0.03);
   border-radius: 7px;
 }
@@ -75,13 +132,13 @@ export default {
 .main .item .activate div {
   width: fit-content;
   padding: 10px 20px;
-  background: #3C4DDB;
+  background: #3c4ddb;
   border-radius: 7px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .main .item.active .activate div {
-  display: none
+  display: none;
 }
 
 .main .item.headings > div {
@@ -95,7 +152,15 @@ export default {
 }
 
 .main .item.new .create {
-  color: #3C4DDB;
+  color: #3c4ddb;
+}
+
+.create div span {
+  cursor: pointer;
+}
+
+.create {
+  cursor: pointer;
 }
 
 .main .item.new .create span {
@@ -104,18 +169,18 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #3C4DDB
+  background: #3c4ddb;
 }
 
 .main .item.new .create span:before {
   position: absolute;
   top: 15px;
   left: 25px;
-  content: "";
+  content: '';
   display: block;
   width: 2px;
   height: 20px;
-  background: #fff
+  background: #fff;
 }
 
 .main .item.new .create span:after {
@@ -123,10 +188,10 @@ export default {
   top: 15px;
   left: 25px;
   transform: rotate(90deg);
-  content: "";
+  content: '';
   display: block;
   width: 2px;
   height: 20px;
-  background: #fff
+  background: #fff;
 }
 </style>

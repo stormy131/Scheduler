@@ -15,20 +15,20 @@
 
 <script>
 export default {
-  name: "Task",
-  props: ['task'],
+  name: 'Task',
+  props: {
+    task: Object
+  },
   data() {
     return {
       statuses: {
         paused: `<i class="fas fa-pause"></i> Paused`,
         progress: `In progress`,
         done: `<i class="fas fa-check"></i> Done`,
-      }
-    }
+      },
+    };
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import Menu from "../components/Menu";
-import Project from "../components/Project";
-import request from "../plugins/request";
+import Menu from '../components/Menu';
+import Project from '../components/Project';
+import request from '../plugins/request';
 
 export default {
-  name: "SingleProject",
+  name: 'SingleProject',
 
   components: {
     Menu,
@@ -19,17 +19,15 @@ export default {
   },
   data() {
     return {
-      user: null
-    }
+      user: null,
+    };
   },
   mounted() {
-    request('/api/account').then(data => {
+    request('/api/account').then((data) => {
       this.user = data;
-    })
+    });
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
