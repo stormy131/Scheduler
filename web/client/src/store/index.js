@@ -24,7 +24,7 @@ export default new Vuex.Store({
     logout(state) {
       state.status = '';
       state.token = '';
-      state.user = {};
+      state.user = '{}';
     },
   },
   actions: {
@@ -58,11 +58,11 @@ export default new Vuex.Store({
         method: 'POST',
       }).catch((err) => console.log(err));
     },
-    logout({ commit }) {
+    async logout({ commit }) {
       commit('logout');
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      delete axios.defaults.headers.usertoken;
+      return delete axios.defaults.headers.usertoken;
     },
   },
   getters: {
