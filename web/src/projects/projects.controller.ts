@@ -22,17 +22,17 @@ export class ProjectsController {
     }
 
     @Post()
-    async createProject(@Req() req: Request, @Body() body: ProjectDto){
-        await this.projectsService.createProject(req, body);
+    async createProject(@Req() req: Request, @Body() body: ProjectDto): Promise<boolean>{
+        return await this.projectsService.createProject(req, body);
     }
 
     @Delete(':id')
-    async deleteProject(@Param('id') id: string){
-        await this.projectsService.deleteTask(+id);
+    async deleteProject(@Param('id') id: string): Promise<boolean>{
+        return await this.projectsService.deleteProject(+id);
     }
 
     @Patch(':id')
-    async activateProject(@Param('id') id: string){
-        await this.projectsService.changeActiveProject(+id);
+    async activateProject(@Param('id') id: string): Promise<boolean> {
+        return await this.projectsService.changeActiveProject(+id);
     }
 }

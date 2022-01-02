@@ -9,15 +9,15 @@ import { Request } from 'express';
 @UseGuards(JwtGuard)
 @UseInterceptors(JwtInterceptor)
 export class AccountsController{
-    constructor(private readonly accounstService: AccountService){}
+    constructor(private readonly accountsService: AccountService){}
 
     @Patch()
     async updateAccount(@Req() req: Request, @Body() body: UpdateAccount){
-        return await this.accounstService.updateAccount(req, body);
+        return await this.accountsService.updateAccount(req, body);
     }
 
     @Delete()
     async deleteAccount(@Req() req: Request){
-        return await this.accounstService.deleteAccount(req);
+        return await this.accountsService.deleteAccount(req);
     }
 }
