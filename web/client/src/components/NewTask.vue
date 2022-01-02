@@ -1,31 +1,41 @@
 <template>
   <div class="new-task">
     <h3 class="new-task__heading">Create a new Task</h3>
-    <form action="#">
+    <form action="#" @submit.prevent="submitHandler">
       <fieldset class="new-task__input">
         <legend>Task</legend>
         <label>
-          <input name="name" placeholder="e.g. Website Design" type="text">
+          <input name="name" placeholder="e.g. Website Design" type="text" required v-model.lazy="name">
         </label>
-        <input id="importance" name="importance" type="radio">
+        <input id="importance" name="importance" type="checkbox" v-model.lazy="importance">
         <label for="importance">importance</label>
-        <input id="urgency" name="urgency" type="radio">
+        <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency">
         <label for="importance">urgency</label>
       </fieldset>
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>
         <label>
-          <input placeholder="__/__/__" type="date">
+          <input placeholder="__/__/__" type="date" v-model.lazy="date">
         </label>
       </fieldset>
-      <button class="new-task__cancel">Cancel</button>
-      <button class="new-task__create">Create</button>
+      <div class="new-task__buttons">
+        <button class="new-task__cancel">Cancel</button>
+        <button class="new-task__submit" type="submit">Create</button>
+      </div>
     </form>
   </div>
 </template>
 <script>
 export default {
-  name: "NewTask"
+  name: 'NewTask',
+  data() {
+    return {
+      name: '',
+      importance: false,
+      urgency: false,
+      deadline: ''
+    }
+  },
 }
 </script>
 
