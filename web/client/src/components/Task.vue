@@ -16,7 +16,9 @@
 <script>
 export default {
   name: 'Task',
-  props: ['task'],
+  props: {
+    task: Object
+  },
   data() {
     return {
       statuses: {

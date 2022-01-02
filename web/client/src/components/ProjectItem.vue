@@ -14,7 +14,9 @@
 <script>
 export default {
   name: 'ProjectItem',
-  props: ['project'],
+  props: {
+    project: Object
+  },
   mounted() {},
   methods: {
     click() {

@@ -8,7 +8,10 @@
 <script>
 export default {
   name: 'MenuButton',
-  props: ['href', 'name'],
+  props: {
+    href: String,
+    name: String
+  },
   computed: {
     src() {
       return require(`../assets/${this.name.toLowerCase()}.svg`);
