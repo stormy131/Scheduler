@@ -1,6 +1,14 @@
 <template>
   <div class="main">
     <div class="title">Projects</div>
+    <div class="item">
+      <div class="name">Project name</div>
+      <div class="activate"></div>
+      <div class="status">Status</div>
+      <div class="date">Creation date</div>
+      <div class="tasks">Subtasks</div>
+      <div class="add">Add subtasks</div>
+    </div>
     <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new" @click="show">
