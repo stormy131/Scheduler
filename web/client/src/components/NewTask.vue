@@ -15,7 +15,7 @@
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>
         <label>
-          <input placeholder="__/__/__" type="date" v-model.lazy="date">
+          <input placeholder="__/__/__" type="date" v-model.lazy="deadline">
         </label>
       </fieldset>
       <div class="new-task__buttons">
@@ -36,6 +36,17 @@ export default {
       deadline: ''
     }
   },
+  methods: {
+    submitHandler() {
+      this.$http.post('/tasks', {
+        name: this.name,
+        importance: this.importance,
+        urgency: this.urgency,
+        deadline: this.deadline,
+        fromProject: this.$parent
+      })
+    }
+  }
 }
 </script>
 
