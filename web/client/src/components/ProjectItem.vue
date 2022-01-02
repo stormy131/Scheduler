@@ -7,7 +7,7 @@
     <div class="status">{{ project.active }}</div>
     <div class="date">{{ project.createdAt }}</div>
     <div class="tasks">{{ project.tasks }}</div>
-    <button class="add" @click="log">+ Add tasks</button>
+    <button class="add" @click="click">+ Add tasks</button>
   </div>
 </template>
 
@@ -18,8 +18,8 @@ export default {
   mounted() {
   },
   methods: {
-    log() {
-      console.log(this.project);
+    click() {
+      this.$emit('addTask');
     }
   }
 }
