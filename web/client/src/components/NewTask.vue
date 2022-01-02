@@ -45,8 +45,10 @@ export default {
         deadline: this.deadline,
         fromProject: this.$parent.newId
       }).then(r => {
-
+        this.$emit('created');
+        console.log(r);
       })
+        .catch(e => console.log(e));
     }
   }
 }

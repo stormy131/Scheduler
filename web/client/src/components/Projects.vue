@@ -27,7 +27,7 @@
         </div>
       </form>
     </div>
-    <NewTask v-show="taskShow"></NewTask>
+    <NewTask v-show="taskShow" @created="showTask"></NewTask>
   </div>
 </template>
 
