@@ -9,8 +9,14 @@
       <div class="tasks">Subtasks</div>
       <div class="add">Add subtasks</div>
     </div>
-    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project" @addTask="showTask($event)"></ProjectItem>
-    <h3 v-show="projects.length < 1">No projects</h3>
+    <ProjectItem
+      v-for="project of projects"
+      :key="project.id"
+      v-bind:project="project"
+      ref="projects"
+      @addTask="showTask($event)"
+      @changeStatus="changeStatus($event)">
+    </ProjectItem>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
     </div>
@@ -78,6 +84,11 @@ export default {
       this.taskShow = !this.taskShow;
       this.newId = id;
     },
+    changeStatus(id) {
+      this.projects.forEach(item => {
+        if(item.active === true && item.id !== id) item.active = !item.active
+      });
+    }
   },
   mounted() {
     this.$http.get('/projects').then((resp) => {

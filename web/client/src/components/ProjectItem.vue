@@ -2,7 +2,7 @@
   <div class="item">
     <div class="name">{{ project.name }}</div>
     <div class='activate__container'>
-      <button class="activate" v-show="!(project.status === true)">Activate</button>
+      <button class="activate" v-show="!(project.active === true)" @click="updateStatus">Activate</button>
     </div>
     <div class="status">{{ project.active }}</div>
     <div class="date">{{ project.createdAt }}</div>
@@ -22,6 +22,13 @@ export default {
     click() {
       this.$emit('addTask', this.project.id);
     },
+    updateStatus() {
+      this.$http.patch(`/projects/${this.project.id}`)
+        .then(() => {
+          this.project.active = !this.project.active
+          this.$emit('changeStatus', this.project.id);
+        }).catch(err => console.log(err));
+    }
   },
 };
 </script>
