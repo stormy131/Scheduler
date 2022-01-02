@@ -17,7 +17,7 @@
 export default {
   name: 'Task',
   props: {
-    task: Object
+    task: Object,
   },
   data() {
     return {

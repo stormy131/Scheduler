@@ -15,7 +15,7 @@
 export default {
   name: 'ProjectItem',
   props: {
-    project: Object
+    project: Object,
   },
   mounted() {},
   methods: {
