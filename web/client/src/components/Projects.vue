@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="title">Projects</div>
-    <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
+    <ProjectItem v-for="project of projects" :key="project.id" v-bind:project="project"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
@@ -11,10 +11,10 @@
       <form action="#" class="new-project__form" @submit.prevent="newHandler">
         <div>
           <label for="name" class="new-project__label">Name</label><br>
-          <input id="name" type="text" class="new-project__input" placeholder="e.g. Website Design" v-model.lazy="newName">
+          <input id="name" type="text" class="new-project__input" placeholder="e.g. Website Design" v-model.lazy="newName" required>
         </div>
         <div class="new-project__buttons">
-          <button class="new-project__close">Close</button>
+          <button class="new-project__close" @click="show">Close</button>
           <button type="submit" class="new-project__submit">Create</button>
         </div>
       </form>
@@ -39,7 +39,22 @@ export default {
   },
   methods: {
     newHandler() {
-
+      this.$http.post('/projects', {
+        name: this.newName,
+        id: this.projects.length - 1,
+        user: this.$store.getters.user
+      }).then(() => {
+        this.projects.push({
+          name: this.newName,
+          id: this.projects.length - 1,
+          createdAt: new Date().toDateString(),
+          active: false,
+          tasks: [].length
+        });
+        this.show();
+        this.newName = '';
+      })
+        .catch(e => console.log(e));
     },
     show() {
       this.showEdit = !this.showEdit
