@@ -1,9 +1,9 @@
 <template>
   <div class="item">
     <div class="name">{{ project.name }}</div>
-    <button class="activate">
-      <span v-show="!(project.status === true)">Activate</span>
-    </button>
+    <div class='activate__container'>
+      <button class="activate" v-show="!(project.status === true)">Activate</button>
+    </div>
     <div class="status">{{ project.active }}</div>
     <div class="date">{{ project.createdAt }}</div>
     <div class="tasks">{{ project.tasks }}</div>
@@ -26,4 +26,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@import "../assets/styles.css";
+</style>
