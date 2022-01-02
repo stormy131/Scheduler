@@ -16,6 +16,11 @@ export default {
         throw err;
       });
     });
+    if (this.$http.defaults.headers.common.usertoken) {
+      this.$router.push('/projects');
+    } else {
+      this.$router.push('/auth');
+    }
   },
 };
 </script>
