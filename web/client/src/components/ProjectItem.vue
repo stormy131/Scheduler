@@ -26,7 +26,4 @@ export default {
 </script>
 
 <style scoped>
-  .item {
-    align-items: center;
-  }
 </style>
