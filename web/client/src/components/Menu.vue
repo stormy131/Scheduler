@@ -11,7 +11,7 @@
       <MenuButton href="projects" name="Projects"></MenuButton>
       <MenuButton href="calendar" name="Calendar"></MenuButton>
       <MenuButton href="reports" name="Reports"></MenuButton>
-      <div class='menu__logout'><i class="fas fa-sign-out-alt" @click='logout'></i> Logout</div>
+      <div class='menu__logout' @click="logout"><i class="fas fa-sign-out-alt" ></i> <p>Logout</p></div>
     </div>
   </div>
 </template>
