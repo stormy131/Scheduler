@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Task",
+  name: 'Task',
   props: ['task'],
   data() {
     return {
@@ -23,12 +23,10 @@ export default {
         paused: `<i class="fas fa-pause"></i> Paused`,
         progress: `In progress`,
         done: `<i class="fas fa-check"></i> Done`,
-      }
-    }
+      },
+    };
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

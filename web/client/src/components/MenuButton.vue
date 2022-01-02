@@ -1,27 +1,27 @@
 <template>
   <div class="menu__button" @click="clickHandler">
-    <img class="menu__svg" v-bind:alt="name" v-bind:src="src">
+    <img class="menu__svg" v-bind:alt="name" v-bind:src="src" />
     <p>Reports</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MenuButton",
+  name: 'MenuButton',
   props: ['href', 'name'],
   computed: {
     src() {
-      return require(`../assets/${this.name.toLowerCase()}.svg`)
-    }
+      return require(`../assets/${this.name.toLowerCase()}.svg`);
+    },
   },
   methods: {
     clickHandler() {
       this.$router.push('/' + this.href);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-@import "../assets/styles.css";
+@import '../assets/styles.css';
 </style>
