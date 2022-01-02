@@ -55,7 +55,7 @@ body {
   background-color: #17191E;
   display: flex;
   align-items: center;
-  justify-content: center;;
+  justify-content: center;
 }
 
 form {

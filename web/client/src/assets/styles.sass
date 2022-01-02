@@ -259,4 +259,88 @@ input:focus
     display: flex
     align-items: center
 
+.new-project, .new-task
+  position: absolute
+  top: 25vh
+  left: 70vh
+  height: 50vh
+  width: 75vh
+  background-color: #f9f9fb
+  padding: 30px
+  border-radius: 7px
+
+  h3
+    margin-bottom: 5vh
+
+  &__label
+    font-weight: lighter
+    text-align: left
+
+  &__input
+    margin-top: 20px
+    background: none
+    border: 1px solid rgba(60, 77, 219, 1)
+    padding: 5px
+    width: 286px
+    height: 42px
+
+  &__buttons
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-top: 40px
+    width: 50%
+
+  &__submit, &__cancel
+    width: 95px
+    height: 39px
+
+  &__submit
+    background-color: #3C4DDB
+    border-radius: 7px
+    color: #ffffff
+
+  &__close
+    color: $hover-color
+
+  &__form
+    display: flex
+    align-items: center
+    flex-direction: column
+    width: 100%
+
+.item
+    align-items: center
+
+.add, .tasks
+  color: $button-color
+  font-weight: bold
+
+.activate
+  border-radius: 7px
+  background-color: $button-color
+  color: white
+
+.new-task
+  form
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+
+  input:not([type=checkbox]):not([type=radio])
+    margin-top: 20px
+    background: none
+    border: 1px solid rgba(60, 77, 219, 1)
+    padding: 5px
+    width: 286px
+    height: 42px
+
+
+
+
+
+
+
+
 
