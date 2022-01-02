@@ -31,8 +31,8 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.commit('logout');
-      this.$router.push('/');
+      this.$store.dispatch('logout')
+        .then(() => this.$router.push('/'));
     }
   },
   components: {
