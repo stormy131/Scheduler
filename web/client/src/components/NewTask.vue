@@ -5,17 +5,17 @@
       <fieldset class="new-task__input">
         <legend>Task</legend>
         <label>
-          <input name="name" placeholder="e.g. Website Design" type="text" required v-model.lazy="name">
+          <input name="name" placeholder="e.g. Website Design" type="text" required v-model.lazy="name" />
         </label>
-        <input id="importance" name="importance" type="checkbox" v-model.lazy="importance">
+        <input id="importance" name="importance" type="checkbox" v-model.lazy="importance" />
         <label for="importance">importance</label>
-        <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency">
+        <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency" />
         <label for="importance">urgency</label>
       </fieldset>
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>
         <label>
-          <input placeholder="__/__/__" type="date" v-model.lazy="deadline">
+          <input placeholder="__/__/__" type="date" v-model.lazy="deadline" />
         </label>
       </fieldset>
       <div class="new-task__buttons">
@@ -33,27 +33,27 @@ export default {
       name: '',
       importance: false,
       urgency: false,
-      deadline: ''
-    }
+      deadline: '',
+    };
   },
   methods: {
     submitHandler() {
-      this.$http.post('/tasks', {
-        name: this.name,
-        importance: this.importance,
-        urgency: this.urgency,
-        deadline: this.deadline,
-        fromProject: this.$parent.newId
-      }).then(r => {
-        this.$emit('created');
-        console.log(r);
-      })
-        .catch(e => console.log(e));
-    }
-  }
-}
+      this.$http
+        .post('/tasks', {
+          name: this.name,
+          importance: this.importance,
+          urgency: this.urgency,
+          deadline: this.deadline,
+          fromProject: this.$parent.newId,
+        })
+        .then((r) => {
+          this.$emit('created');
+          console.log(r);
+        })
+        .catch((e) => console.log(e));
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
-  <div class='container'>
-    <Menu ref='menu' v-bind:user='user'></Menu>
-    <Projects ref='projects'></Projects>
+  <div class="container">
+    <Menu ref="menu" v-bind:user="user"></Menu>
+    <Projects ref="projects"></Projects>
   </div>
 </template>
 
@@ -17,17 +17,15 @@ export default {
   },
   data() {
     return {
-      user: this.$store.getters.user
-    }
+      user: this.$store.getters.user,
+    };
   },
   computed: {
     route() {
-      return this.$route.path
-    }
+      return this.$route.path;
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

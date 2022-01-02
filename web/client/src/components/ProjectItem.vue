@@ -13,17 +13,17 @@
 
 <script>
 export default {
-  name: "ProjectItem",
-  props: ['project'],
-  mounted() {
+  name: 'ProjectItem',
+  props: {
+    project: Object
   },
+  mounted() {},
   methods: {
     click() {
       this.$emit('addTask', this.project.id);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
