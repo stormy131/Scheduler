@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      user: localStorage.getItem('user')
+      user: this.$store.getters.user
     }
   },
   computed: {

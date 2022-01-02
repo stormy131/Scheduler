@@ -3,8 +3,8 @@
     <div class="title">Projects</div>
     <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
-    <div class="item new">
-      <div class="create" @click="!showEdit"><span></span>Create Project</div>
+    <div class="item new" @click="show">
+      <div class="create"><span></span>Create Project</div>
     </div>
     <div class="new-project" v-show="showEdit">
         <h3>Create a new project</h3>
@@ -40,6 +40,9 @@ export default {
   methods: {
     newHandler() {
 
+    },
+    show() {
+      this.showEdit = !this.showEdit
     }
   },
   mounted() {
