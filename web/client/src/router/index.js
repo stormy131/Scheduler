@@ -35,6 +35,10 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/',
+    redirect: '/auth',
+  },
 ];
 
 const router = new VueRouter({
