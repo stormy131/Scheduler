@@ -4,7 +4,17 @@
     <ProjectItem v-for="project of projects" :key="project.id" project="project"></ProjectItem>
     <h3 v-show="projects.length < 1">No projects</h3>
     <div class="item new">
-      <div class="create"><span></span>Create Project</div>
+      <div class="create" @click="!showEdit"><span></span>Create Project</div>
+    </div>
+    <div class="new-project" v-show="showEdit">
+        <h3>Create a new project</h3>
+      <form action="#" class="new-project__form" @submit.prevent="newHandler">
+        <label class="new-project__label">
+          Name
+          <input type="text" class="new-project__input" placeholder="e.g. Website Design">
+        </label>
+        <button type="submit" class="new-project__submit">Create</button>
+      </form>
     </div>
   </div>
 </template>
@@ -16,11 +26,17 @@ export default {
   name: 'Projects',
   data() {
     return {
-      projects: []
+      projects: [],
+      showEdit: false
     }
   },
   components: {
     ProjectItem
+  },
+  methods: {
+    newHandler() {
+
+    }
   },
   mounted() {
     this.$http.get('/projects').then(resp => {
@@ -98,7 +114,7 @@ export default {
   color: #3C4DDB;
 }
 
-.create {
+.create div span {
   cursor: pointer;
 }
 
