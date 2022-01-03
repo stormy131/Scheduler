@@ -485,6 +485,18 @@ input:focus
   color: black
 
 
+.close-button
+  display: none
+  color: white
+  border-radius: 50px
+  width:  20px
+  height: 20px
+  position: absolute
+  top: -4%
+  left: 96.5%
+  background: $button-color
 
-
-
+.item, .main__task
+  position: relative
+  &:hover .close-button
+    display: block
