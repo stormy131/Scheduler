@@ -73,15 +73,13 @@ export default {
       this.isCreate = !this.isCreate;
     },
     deleteTask(id) {
-      this.$http
-        .delete(`/tasks/${id}`)
+      this.$catchWrapper(this.$http.delete, this.$error.setError, `/tasks/${id}`)
         .then(() => {
           this.tasks.splice(
             this.project.tasks.findIndex((item) => item.id === id),
             1
           );
         })
-        .catch((err) => console.log(err));
     },
     showTask() {
       this.isCreated = !this.isCreate

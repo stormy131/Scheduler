@@ -22,12 +22,8 @@ export default {
     };
   },
   mounted() {
-    this.$http
-      .get(`/projects/${this.$route.params.id}`)
-      .then((resp) => {
-        this.project = resp.data;
-      })
-      .catch((err) => console.log(err));
+    this.$catchWrapper(this.$http.get, this.$error.setError, `/projects/${this.$route.params.id}`)
+      .then((resp) => this.project = resp.data);
   },
 };
 </script>

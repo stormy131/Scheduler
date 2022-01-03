@@ -1,41 +1,42 @@
 <template>
-  <div class="main">
-    <div class="title">Projects</div>
-    <div class="item">
-      <div class="name">Project name</div>
+  <div class='main'>
+    <div class='title'>Projects</div>
+    <div class='item'>
+      <div class='name'>Project name</div>
       <div></div>
-      <div class="status">Status</div>
-      <div class="date">Creation date</div>
-      <div class="tasks">Subtasks</div>
-      <div class="add">Add subtasks</div>
+      <div class='status'>Status</div>
+      <div class='date'>Creation date</div>
+      <div class='tasks'>Subtasks</div>
+      <div class='add'>Add subtasks</div>
     </div>
     <ProjectItem
-      v-for="project of projects"
-      :key="project.id"
-      v-bind:project="project"
-      ref="projects"
-      @addTask="showTask($event)"
-      @changeStatus="changeStatus($event)"
-      @projectDeleted="onItemDelete($event)"
+      v-for='project of projects'
+      :key='project.id'
+      v-bind:project='project'
+      ref='projects'
+      @addTask='showTask($event)'
+      @changeStatus='changeStatus($event)'
+      @projectDeleted='onItemDelete($event)'
     >
     </ProjectItem>
-    <div class="item new" @click="show">
-      <div class="create"><span></span>Create Project</div>
+    <div class='item new' @click='show'>
+      <div class='create'><span></span>Create Project</div>
     </div>
-    <div class="new-project" v-show="showEdit">
+    <div class='new-project' v-show='showEdit'>
       <h3>Create a new project</h3>
-      <form action="#" class="new-project__form" @submit.prevent="newHandler">
+      <form action='#' class='new-project__form' @submit.prevent='newHandler'>
         <div>
-          <label for="name" class="new-project__label">Name</label><br />
-          <input id="name" type="text" class="new-project__input" placeholder="e.g. Website Design" v-model.lazy="newName" required />
+          <label for='name' class='new-project__label'>Name</label><br />
+          <input id='name' type='text' class='new-project__input' placeholder='e.g. Website Design'
+                 v-model.lazy='newName' required />
         </div>
-        <div class="new-project__buttons">
-          <button class="new-project__close" @click="show">Close</button>
-          <button type="submit" class="new-project__submit">Create</button>
+        <div class='new-project__buttons'>
+          <button class='new-project__close' @click='show'>Close</button>
+          <button type='submit' class='new-project__submit'>Create</button>
         </div>
       </form>
     </div>
-    <NewTask v-show="taskShow" @created="showTask"></NewTask>
+    <NewTask v-show='taskShow' @created='showTask'></NewTask>
   </div>
 </template>
 
@@ -51,33 +52,31 @@ export default {
       showEdit: false,
       taskShow: false,
       newName: '',
-      newId: null,
+      newId: null
     };
   },
   components: {
     ProjectItem,
-    NewTask,
+    NewTask
   },
   methods: {
     newHandler() {
-      this.$http
-        .post('/projects', {
-          name: this.newName,
-          id: this.projects.length,
-          user: this.$store.getters.user,
-        })
+      this.$catchWrapper(this.$http.post, this.$error.setError, '/projects', {
+        name: this.newName,
+        id: this.projects.length,
+        user: this.$store.getters.user
+      })
         .then(() => {
           this.projects.push({
             name: this.newName,
             id: this.projects.length,
             createdAt: `${new Date().getUTCDate()} ${new Date().toLocaleString('default', { month: 'long' })}`,
             active: false,
-            tasks: [].length,
+            tasks: [].length
           });
           this.show();
           this.newName = '';
-        })
-        .catch((e) => console.log(e));
+        });
     },
     show() {
       this.showEdit = !this.showEdit;
@@ -87,20 +86,17 @@ export default {
       this.newId = id;
     },
     changeStatus(id) {
-      this.$http
-        .patch(`/projects/${id}`)
+      this.$catchWrapper(this.$http.patch, this.$error.setError, `/projects/${id}`)
         .then(() => {
           const el = this.projects.find((item) => item.id === id);
           el.active = !el.active;
-        })
-        .catch((err) => console.log(err));
+        });
       this.projects.forEach((item) => {
         if (item.active === true && item.id !== id) item.active = !item.active;
       });
     },
     onItemDelete(id) {
-      this.$http
-        .delete(`/projects/${id}`)
+      this.$catchWrapper(this.$http.delete, this.$error.setError, `/projects/${id}`)
         .then(() => {
           this.projects.splice(
             this.projects.findIndex((item) => item.id === id),
@@ -108,17 +104,18 @@ export default {
           );
         })
         .catch((err) => console.log(err));
-    },
+    }
   },
   mounted() {
-    this.$http.get('/projects').then((resp) => {
-      this.projects = resp.data.map((proj) => {
-        const date = new Date(proj.createdAt);
-        proj.createdAt = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'long' })}`;
-        return proj;
+    this.$catchWrapper(this.$http.get, this.$error.setError, `/projects`)
+      .then((resp) => {
+        this.projects = resp.data.map((proj) => {
+          const date = new Date(proj.createdAt);
+          proj.createdAt = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'long' })}`;
+          return proj;
+        });
       });
-    });
-  },
+  }
 };
 </script>
 

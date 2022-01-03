@@ -31,10 +31,8 @@ export default {
         email,
         password,
       };
-      this.$store
-        .dispatch('login', data)
-        .then(() => this.$router.push('/projects'))
-        .catch((err) => console.log(err));
+      this.$catchWrapper(this.$store.dispatch, this.$error.setError, 'login', data)
+        .then(() => this.$router.push('/projects'));
     },
   },
 };

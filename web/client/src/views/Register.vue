@@ -36,10 +36,8 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store
-        .dispatch('register', data)
-        .then(() => this.$router.push('/auth'))
-        .catch((err) => console.log(err));
+      this.$catchWrapper(this.$store.dispatch, this.$error.setError, 'register', data)
+        .then(() => this.$router.push('/auth'));
     },
   },
 };
