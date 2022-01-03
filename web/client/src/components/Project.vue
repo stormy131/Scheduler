@@ -85,7 +85,7 @@ export default {
   },
   computed: {
     projectCount() {
-      return this.tasks.length;
+      return this.project.tasks.length;
     }
   },
 };
