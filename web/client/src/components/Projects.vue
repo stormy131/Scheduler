@@ -60,24 +60,21 @@ export default {
   },
   methods: {
     newHandler() {
-      this.$http
-        .post('/projects', {
+      this.$catchWrapper(this)(this.$http.post, '/projects', {
+        name: this.newName,
+        id: this.projects.length,
+        user: this.$store.getters.user,
+      }).then(() => {
+        this.projects.push({
           name: this.newName,
           id: this.projects.length,
-          user: this.$store.getters.user,
-        })
-        .then(() => {
-          this.projects.push({
-            name: this.newName,
-            id: this.projects.length,
-            createdAt: `${new Date().getUTCDate()} ${new Date().toLocaleString('default', { month: 'long' })}`,
-            active: false,
-            tasks: [].length,
-          });
-          this.show();
-          this.newName = '';
-        })
-        .catch((e) => console.log(e));
+          createdAt: `${new Date().getUTCDate()} ${new Date().toLocaleString('default', { month: 'long' })}`,
+          active: false,
+          tasks: [].length,
+        });
+        this.show();
+        this.newName = '';
+      });
     },
     show() {
       this.showEdit = !this.showEdit;
@@ -87,20 +84,16 @@ export default {
       this.newId = id;
     },
     changeStatus(id) {
-      this.$http
-        .patch(`/projects/${id}`)
-        .then(() => {
-          const el = this.projects.find((item) => item.id === id);
-          el.active = !el.active;
-        })
-        .catch((err) => console.log(err));
+      this.$catchWrapper(this)(this.$http.patch, `/projects/${id}`).then(() => {
+        const el = this.projects.find((item) => item.id === id);
+        el.active = !el.active;
+      });
       this.projects.forEach((item) => {
         if (item.active === true && item.id !== id) item.active = !item.active;
       });
     },
     onItemDelete(id) {
-      this.$http
-        .delete(`/projects/${id}`)
+      this.$catchWrapper(this)(this.$http.delete, `/projects/${id}`)
         .then(() => {
           this.projects.splice(
             this.projects.findIndex((item) => item.id === id),
@@ -111,7 +104,7 @@ export default {
     },
   },
   mounted() {
-    this.$http.get('/projects').then((resp) => {
+    this.$catchWrapper(this)(this.$http.get, `/projects`).then((resp) => {
       this.projects = resp.data.map((proj) => {
         const date = new Date(proj.createdAt);
         proj.createdAt = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'long' })}`;

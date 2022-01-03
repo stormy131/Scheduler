@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <form class="register-form" @submit.prevent="submitHandler">
       <div class="welcome">Welcome</div>
       <div class="heading">Create an account</div>
@@ -36,22 +36,14 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store
-        .dispatch('register', data)
-        .then(() => this.$router.push('/auth'))
-        .catch((err) => console.log(err));
+      this.$store.dispatch('register', data).then(() => this.$router.push('/auth'));
     },
   },
 };
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  font-family: Noto Sans, sans-serif;
-  box-sizing: border-box;
-}
+@import '../assets/styles.css';
 
 .container {
   width: 100%;

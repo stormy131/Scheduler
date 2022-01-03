@@ -2,9 +2,12 @@
   <main class="main">
     <header class="main__header">
       <div class="header__left">
-        <h3 class="main__heading">{{ project.projectName }}</h3>
-        <button class="main__edit" @click="isEdit = true">Edit</button>
-        <a class="main__projects" href="#"><i class="fas fa-chevron-left"></i> All projects</a>
+        <h3 class="main__heading">{{ project.name }}</h3>
+        <button class="main__edit" @click="isEdit = !isEdit">Edit</button>
+        <router-link class="main__projects" :to="{ path: '/projects' }">
+          <i class="fas fa-chevron-left"></i>
+          All projects
+        </router-link>
       </div>
       <div class="header__right">
         <form action="#">
@@ -20,7 +23,7 @@
         <button class="main__sort-tasks-page">Tasks</button>
       </div>
       <div class="main__sort-tasks__buttons">
-        <button class="main__sort-tasks__button" @click="isCreate = true">+ Create Task</button>
+        <button class="main__sort-tasks__button" @click="isCreate = !isCreate">+ Create Task</button>
       </div>
     </div>
     <div class="main__tasks">
@@ -28,21 +31,20 @@
         <span class="active">{{ projectCount }}</span> items in result
       </p>
       <div class="main__tasks-body">
-        <Task v-for="task of tasks" :key="task.id" :task="task"></Task>
+        <Task v-for="task of project.tasks" :key="task.id" :task="task" @deleteTask="deleteTask($event)"></Task>
         <div class="create__task">
-          <button class="create__task_button">
+          <button class="create__task_button" @click="isCreate = !isCreate">
             <i class="fas fa-plus"></i>
           </button>
-          <p class="create__task__text" @click="isCreate = true">Create task</p>
+          <p class="create__task__text">Create task</p>
         </div>
       </div>
     </div>
-    <NewTask v-show="isEdit"></NewTask>
+    <NewTask v-show="isCreate" @created="newTask($event)"></NewTask>
   </main>
 </template>
 
 <script>
-import request from '../plugins/request';
 import Task from './Task';
 import NewTask from './NewTask';
 
@@ -53,7 +55,6 @@ export default {
   name: 'Project',
   data() {
     return {
-      tasks: [],
       isEdit: false,
       isCreate: false,
     };
@@ -66,16 +67,27 @@ export default {
     editHandler() {
       this.isEdit = true;
     },
+    newTask(data) {
+      console.log(data);
+      if (data) this.project.tasks.push(data);
+      this.isCreate = !this.isCreate;
+    },
+    deleteTask(id) {
+      this.$catchWrapper(this)(this.$http.delete, `/tasks/${id}`).then(() => {
+        this.tasks.splice(
+          this.project.tasks.findIndex((item) => item.id === id),
+          1
+        );
+      });
+    },
+    showTask() {
+      this.isCreated = !this.isCreate;
+    },
   },
   computed: {
     projectCount() {
-      return this.tasks.length;
+      return this.project.tasks.length;
     },
-  },
-  mounted() {
-    request('/api/tasks', 'GET', { id: this.$router.params.id }).then((data) => {
-      this.tasks = data;
-    });
   },
 };
 </script>

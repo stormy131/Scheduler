@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'App',
-  created: function () {
+  mounted: function () {
     this.$http.interceptors.response.use(null, (err) => {
       return new Promise(() => {
         if (err.status === 403) {

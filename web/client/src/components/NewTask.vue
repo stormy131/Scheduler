@@ -40,19 +40,23 @@ export default {
   },
   methods: {
     submitHandler() {
-      this.$http
-        .post('/tasks', {
-          name: this.name,
-          importance: this.importance,
-          urgency: this.urgency,
-          deadline: this.deadline,
-          fromProject: this.$parent.newId,
-        })
-        .then((r) => {
-          this.$emit('created');
-          console.log(r);
-        })
-        .catch((e) => console.log(e));
+      const data = {
+        name: this.name,
+        importance: this.importance,
+        urgency: this.urgency,
+        deadline: this.deadline,
+        fromProject: this.$parent.newId,
+      };
+      this.$catchWrapper(this)(this.$http.post, '/tasks', data).then(() => {
+        this.$emit('created', data);
+        this.clear();
+      });
+    },
+    clear() {
+      this.name = '';
+      this.importance = false;
+      this.urgency = false;
+      this.deadline = '';
     },
   },
 };

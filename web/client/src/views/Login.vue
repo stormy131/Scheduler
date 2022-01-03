@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <form class="login-form" @submit.prevent="submitHandler">
       <div class="welcome">Welcome</div>
       <div class="heading">Sign in</div>
@@ -34,19 +34,14 @@ export default {
       this.$store
         .dispatch('login', data)
         .then(() => this.$router.push('/projects'))
-        .catch((err) => console.log(err));
+        .catch(() => alert('Something went wrong, did you wrote your email and password correctly?'));
     },
   },
 };
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  font-family: Noto Sans, sans-serif;
-  box-sizing: border-box;
-}
+@import '../assets/styles.css';
 
 .container {
   margin: 0;
