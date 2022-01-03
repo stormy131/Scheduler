@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <NewTask v-show="isEdit"></NewTask>
+    <NewTask v-show="isEdit" @created="newTask($event)"></NewTask>
   </main>
 </template>
 
@@ -68,6 +68,10 @@ export default {
     editHandler() {
       this.isEdit = true;
     },
+    newTask(data) {
+      this.tasks.push(data);
+    },
+
   },
   computed: {
     projectCount() {
@@ -75,6 +79,12 @@ export default {
     },
   },
   mounted() {
+    this.$http.get(`/project/${this.project.id}`)
+      .then((resp) => {
+        console.log(resp);
+        this.tasks = [...resp.data];
+      })
+      .catch((err) => console.log(err));
   },
 };
 </script>
