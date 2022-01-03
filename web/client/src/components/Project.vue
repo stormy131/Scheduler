@@ -77,7 +77,7 @@ export default {
         .delete(`/tasks/${id}`)
         .then(() => {
           this.tasks.splice(
-            this.tasks.findIndex((item) => item.id === id),
+            this.project.tasks.findIndex((item) => item.id === id),
             1
           );
         })
