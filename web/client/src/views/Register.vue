@@ -36,18 +36,15 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$catchWrapper(this.$store.dispatch, this.$error.setError, 'register', data)
+      this.$store.dispatch('register', data)
         .then(() => this.$router.push('/auth'));
     },
-  },
+  }
 };
 </script>
 
 <style scoped>
-* {
-  font-family: Noto Sans, sans-serif;
-  box-sizing: border-box;
-}
+@import '../assets/styles.css';
 
 .container {
   width: 100%;

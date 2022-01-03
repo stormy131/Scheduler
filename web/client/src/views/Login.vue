@@ -31,18 +31,16 @@ export default {
         email,
         password,
       };
-      this.$catchWrapper(this.$store.dispatch, this.$error.setError, 'login', data)
-        .then(() => this.$router.push('/projects'));
+      this.$store.dispatch('login', data)
+        .then(() => this.$router.push('/projects'))
+        .catch(() => alert('Something went wrong, did you wrote your email and password correctly?'));
     },
   },
 };
 </script>
 
 <style scoped>
-* {
-  font-family: Noto Sans, sans-serif;
-  box-sizing: border-box;
-}
+@import '../assets/styles.css';
 
 .container {
   margin: 0;
