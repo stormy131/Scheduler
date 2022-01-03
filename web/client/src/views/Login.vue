@@ -1,15 +1,17 @@
 <template>
-  <form class="login-form" @submit.prevent="submitHandler">
-    <div class="welcome">Welcome</div>
-    <div class="heading">Sign in</div>
-    <div class="subheading">
-      New user?
-      <router-link :to="{ path: '/auth/reg' }">Create an account.</router-link>
-    </div>
-    <label>Email address <input v-model.lazy="email" name="email" type="text" /></label>
-    <label>Password <input v-model.lazy="password" name="password" type="password" /></label>
-    <button type="submit">Log in</button>
-  </form>
+  <div class='container'>
+    <form class="login-form" @submit.prevent="submitHandler">
+      <div class="welcome">Welcome</div>
+      <div class="heading">Sign in</div>
+      <div class="subheading">
+        New user?
+        <router-link :to="{ path: '/auth/reg' }">Create an account.</router-link>
+      </div>
+      <label>Email address <input v-model.lazy="email" name="email" type="text" /></label>
+      <label>Password <input v-model.lazy="password" name="password" type="password" /></label>
+      <button type="submit">Log in</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -40,11 +42,13 @@ export default {
 
 <style scoped>
 * {
+  margin: 0;
+  padding: 0;
   font-family: Noto Sans, sans-serif;
   box-sizing: border-box;
 }
 
-#app {
+.container {
   margin: 0;
   width: 100%;
   height: 100vh;
@@ -56,7 +60,7 @@ export default {
 
 form {
   width: 678px;
-  height: 749px;
+  height: 100%;
   background: #1b1d22;
   padding: 64px 109px;
 }

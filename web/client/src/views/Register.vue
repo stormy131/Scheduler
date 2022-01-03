@@ -1,19 +1,21 @@
 <template>
-  <form class="register-form" @submit.prevent="submitHandler">
-    <div class="welcome">Welcome</div>
-    <div class="heading">Create an account</div>
-    <div class="subheading">
-      Already have an account?
-      <router-link :to="{ path: '/auth' }">Sign in.</router-link>
-    </div>
-    <label>Email address <input v-model.lazy="email" name="email" type="text" /></label>
-    <div class="name">
-      <label>First name <input v-model.lazy="firstName" name="firstName" type="text" /></label>
-      <label>Last name <input v-model.lazy="lastName" name="lastName" type="text" /></label>
-    </div>
-    <label>Password <input v-model.lazy="password" name="password" type="password" /></label>
-    <button type="submit">Create account</button>
-  </form>
+  <div class='container'>
+    <form class="register-form" @submit.prevent="submitHandler">
+      <div class="welcome">Welcome</div>
+      <div class="heading">Create an account</div>
+      <div class="subheading">
+        Already have an account?
+        <router-link :to="{ path: '/auth' }">Sign in.</router-link>
+      </div>
+      <label>Email address <input v-model.lazy="email" name="email" type="text" /></label>
+      <div class="name">
+        <label>First name <input v-model.lazy="firstName" name="firstName" type="text" /></label>
+        <label>Last name <input v-model.lazy="lastName" name="lastName" type="text" /></label>
+      </div>
+      <label>Password <input v-model.lazy="password" name="password" type="password" /></label>
+      <button type="submit">Create account</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -45,12 +47,13 @@ export default {
 
 <style scoped>
 * {
+  margin: 0;
+  padding: 0;
   font-family: Noto Sans, sans-serif;
   box-sizing: border-box;
 }
 
-#app {
-  margin: 0;
+.container {
   width: 100%;
   height: 100vh;
   background-color: #17191e;
@@ -61,7 +64,7 @@ export default {
 
 form {
   width: 678px;
-  height: 749px;
+  height: 100%;
   background: #1b1d22;
   padding: 64px 109px;
 }
