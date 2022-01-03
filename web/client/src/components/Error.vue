@@ -1,5 +1,5 @@
 <template>
-  <div class='error-block' v-if='isVisible'>
+  <div class='error-block' v-show='isVisible'>
     <p class='error-msg'>
       <button class='close-btn' @click="setError('')">&times;</button>
       {{ text }}
