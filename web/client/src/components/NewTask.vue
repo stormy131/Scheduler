@@ -51,13 +51,16 @@ export default {
         .post('/tasks', data)
         .then(() => {
           this.$emit('created', data);
-          this.name =  '';
-          this.importance =  false;
-          this.urgency =  false;
-          this.deadline =  '';
+          this.clear();
         })
         .catch((e) => console.log(e));
     },
+    clear() {
+      this.name =  '';
+      this.importance =  false;
+      this.urgency =  false;
+      this.deadline =  '';
+    }
   },
 };
 </script>
