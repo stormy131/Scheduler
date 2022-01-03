@@ -33,10 +33,10 @@
       <div class='main__tasks-body'>
         <Task v-for='task of project.tasks' :key='task.id' :task='task' @deleteTask='deleteTask($event)'></Task>
         <div class='create__task'>
-          <button class='create__task_button'>
+          <button class='create__task_button' @click='isCreate = !isCreate'>
             <i class='fas fa-plus'></i>
           </button>
-          <p class='create__task__text' @click='isCreate = !isCreate'>Create task</p>
+          <p class='create__task__text'>Create task</p>
         </div>
       </div>
     </div>
@@ -68,7 +68,8 @@ export default {
       this.isEdit = true;
     },
     newTask(data) {
-      this.project.tasks.push(data);
+      console.log(data);
+      if (data) this.project.tasks.push(data);
       this.isCreate = !this.isCreate;
     },
     deleteTask(id) {
@@ -81,6 +82,9 @@ export default {
           );
         })
         .catch((err) => console.log(err));
+    },
+    showTask() {
+      this.isCreated = !this.isCreate
     }
   },
   computed: {
