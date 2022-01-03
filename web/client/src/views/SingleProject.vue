@@ -26,7 +26,6 @@ export default {
       .get(`/projects/${this.$route.params.id}`)
       .then((resp) => {
         this.project = resp.data;
-        console.log(resp);
       })
       .catch((err) => console.log(err));
   },

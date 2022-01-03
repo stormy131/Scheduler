@@ -31,7 +31,7 @@
         <span class='active'>{{ projectCount }}</span> items in result
       </p>
       <div class='main__tasks-body'>
-        <Task v-for='task of tasks' :key='task.id' :task='task'></Task>
+        <Task v-for='task of project.tasks' :key='task.id' :task='task'></Task>
         <div class='create__task'>
           <button class='create__task_button'>
             <i class='fas fa-plus'></i>
@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <NewTask v-show='isEdit' @created='newTask($event)'></NewTask>
+    <NewTask v-show='isCreate' @created='newTask($event)'></NewTask>
   </main>
 </template>
 
@@ -55,7 +55,6 @@ export default {
   name: 'Project',
   data() {
     return {
-      tasks: [],
       isEdit: false,
       isCreate: false
     };
@@ -69,7 +68,8 @@ export default {
       this.isEdit = true;
     },
     newTask(data) {
-      this.tasks.push(data);
+      this.project.tasks.push(data);
+      this.isCreate = !this.isCreate;
     },
     deleteTask(id) {
       this.$http
@@ -88,10 +88,6 @@ export default {
       return this.tasks.length;
     }
   },
-  mounted() {
-    this.tasks = [this.project.tasks];
-    console.log(this.project, this.tasks);
-  }
 };
 </script>
 
