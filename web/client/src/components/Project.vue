@@ -3,7 +3,7 @@
     <header class="main__header">
       <div class="header__left">
         <h3 class="main__heading">{{ project.projectName }}</h3>
-        <button class="main__edit" @click="isEdit = true">Edit</button>
+        <button class="main__edit" @click="isEdit = !isEdit">Edit</button>
         <router-link class="main__projects" to="{path: '/projects'}}">
           <i class="fas fa-chevron-left"></i>
           All projects
@@ -23,7 +23,7 @@
         <button class="main__sort-tasks-page">Tasks</button>
       </div>
       <div class="main__sort-tasks__buttons">
-        <button class="main__sort-tasks__button" @click="isCreate = true">+ Create Task</button>
+        <button class="main__sort-tasks__button" @click="isCreate = !isCreate">+ Create Task</button>
       </div>
     </div>
     <div class="main__tasks">
@@ -36,7 +36,7 @@
           <button class="create__task_button">
             <i class="fas fa-plus"></i>
           </button>
-          <p class="create__task__text" @click="isCreate = true">Create task</p>
+          <p class="create__task__text" @click="isCreate = !isCreate">Create task</p>
         </div>
       </div>
     </div>
