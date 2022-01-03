@@ -4,7 +4,7 @@
       <div class='header__left'>
         <h3 class='main__heading'>{{ project.name }}</h3>
         <button class='main__edit' @click='isEdit = !isEdit'>Edit</button>
-        <router-link class='main__projects' to="{path: '/projects'}}">
+        <router-link class='main__projects' :to="{ path: '/projects' }">
           <i class='fas fa-chevron-left'></i>
           All projects
         </router-link>
