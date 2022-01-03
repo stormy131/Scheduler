@@ -26,12 +26,16 @@
     "@vue/test-utils": "^1.3.0",
     "axios": "^0.18.1",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.5",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "^27.4.5",
+    "jsdom": "^19.0.0",
+    "jsdom-global": "^3.0.2",
     "sass": "^1.44.0",
     "vue-cli-plugin-sso": "~1.0.5",
     "vue-cookie": "^1.1.4",
+    "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -47,18 +51,6 @@
       "parser": "babel-eslint"
     },
     "rules": {}
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
-    "collectCoverage": true,
-    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"]
   },
   "browserslist": [
     "> 1%",
