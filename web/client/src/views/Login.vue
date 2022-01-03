@@ -40,15 +40,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 * {
-  font-family: Noto Sans, sans-serif;
-  box-sizing: border-box;
-}
-
-body {
   margin: 0;
   padding: 0;
+  font-family: Noto Sans, sans-serif;
+  box-sizing: border-box;
 }
 
 .container {
