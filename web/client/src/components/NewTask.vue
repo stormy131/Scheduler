@@ -49,7 +49,13 @@ export default {
       };
       this.$http
         .post('/tasks', data)
-        .then(() => this.$emit('created', data))
+        .then(() => {
+          this.$emit('created', data);
+          this.name =  '';
+          this.importance =  false;
+          this.urgency =  false;
+          this.deadline =  '';
+        })
         .catch((e) => console.log(e));
     },
   },
