@@ -40,16 +40,17 @@ export default {
   },
   methods: {
     submitHandler() {
+      const data = {
+        name: this.name,
+        importance: this.importance,
+        urgency: this.urgency,
+        deadline: this.deadline,
+        fromProject: this.$parent.newId,
+      };
       this.$http
-        .post('/tasks', {
-          name: this.name,
-          importance: this.importance,
-          urgency: this.urgency,
-          deadline: this.deadline,
-          fromProject: this.$parent.newId,
-        })
+        .post('/tasks', data)
         .then((r) => {
-          this.$emit('created');
+          this.$emit('created', data);
           console.log(r);
         })
         .catch((e) => console.log(e));
