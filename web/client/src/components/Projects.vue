@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     newHandler() {
-      this.$catchWrapper(this.$http.post, this.$error.setError, '/projects', {
+      this.$catchWrapper(this)(this.$http.post, '/projects', {
         name: this.newName,
         id: this.projects.length,
         user: this.$store.getters.user
@@ -86,7 +86,7 @@ export default {
       this.newId = id;
     },
     changeStatus(id) {
-      this.$catchWrapper(this.$http.patch, this.$error.setError, `/projects/${id}`)
+      this.$catchWrapper(this)(this.$http.patch, `/projects/${id}`)
         .then(() => {
           const el = this.projects.find((item) => item.id === id);
           el.active = !el.active;
@@ -96,7 +96,7 @@ export default {
       });
     },
     onItemDelete(id) {
-      this.$catchWrapper(this.$http.delete, this.$error.setError, `/projects/${id}`)
+      this.$catchWrapper(this)(this.$http.delete, `/projects/${id}`)
         .then(() => {
           this.projects.splice(
             this.projects.findIndex((item) => item.id === id),
@@ -107,7 +107,7 @@ export default {
     }
   },
   mounted() {
-    this.$catchWrapper(this.$http.get, this.$error.setError, `/projects`)
+    this.$catchWrapper(this)(this.$http.get, `/projects`)
       .then((resp) => {
         this.projects = resp.data.map((proj) => {
           const date = new Date(proj.createdAt);

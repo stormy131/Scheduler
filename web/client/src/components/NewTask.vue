@@ -47,7 +47,7 @@ export default {
         deadline: this.deadline,
         fromProject: this.$parent.newId,
       };
-      this.$catchWrapper(this.$http.post, this.$error.setError, '/tasks', data)
+      this.$catchWrapper(this)(this.$http.post, '/tasks', data)
         .then(() => {
           this.$emit('created', data);
           this.clear();
