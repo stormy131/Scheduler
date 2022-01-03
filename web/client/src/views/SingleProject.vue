@@ -8,8 +8,6 @@
 <script>
 import Menu from '../components/Menu';
 import Project from '../components/Project';
-import request from '../plugins/request';
-
 export default {
   name: 'SingleProject',
 
@@ -19,14 +17,9 @@ export default {
   },
   data() {
     return {
-      user: null,
+      user: this.$store.getters.user,
     };
-  },
-  mounted() {
-    request('/api/account').then((data) => {
-      this.user = data;
-    });
-  },
+  }
 };
 </script>
 
