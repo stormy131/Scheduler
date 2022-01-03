@@ -47,18 +47,17 @@ export default {
         deadline: this.deadline,
         fromProject: this.$parent.newId,
       };
-      this.$catchWrapper(this)(this.$http.post, '/tasks', data)
-        .then(() => {
-          this.$emit('created', data);
-          this.clear();
-        })
+      this.$catchWrapper(this)(this.$http.post, '/tasks', data).then(() => {
+        this.$emit('created', data);
+        this.clear();
+      });
     },
     clear() {
-      this.name =  '';
-      this.importance =  false;
-      this.urgency =  false;
-      this.deadline =  '';
-    }
+      this.name = '';
+      this.importance = false;
+      this.urgency = false;
+      this.deadline = '';
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <form class="login-form" @submit.prevent="submitHandler">
       <div class="welcome">Welcome</div>
       <div class="heading">Sign in</div>
@@ -31,7 +31,8 @@ export default {
         email,
         password,
       };
-      this.$store.dispatch('login', data)
+      this.$store
+        .dispatch('login', data)
         .then(() => this.$router.push('/projects'))
         .catch(() => alert('Something went wrong, did you wrote your email and password correctly?'));
     },

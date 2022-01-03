@@ -2,7 +2,7 @@
   <div class="container">
     <Menu ref="menu" v-bind:user="user"></Menu>
     <Projects ref="projects"></Projects>
-    <Error ref='error'></Error>
+    <Error ref="error"></Error>
   </div>
 </template>
 
@@ -26,8 +26,8 @@ export default {
       return this.$route.path;
     },
   },
-errorCaptured(err) {
-  this.$refs.error.setError(err);
-}
+  errorCaptured(err) {
+    this.$refs.error.setError(err);
+  },
 };
 </script>

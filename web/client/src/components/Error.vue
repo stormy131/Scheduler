@@ -1,7 +1,7 @@
 <template>
-  <div class='error-block' v-show='isVisible'>
-    <p class='error-msg'>
-      <button class='close-btn' @click="setError('')">&times;</button>
+  <div class="error-block" v-show="isVisible">
+    <p class="error-msg">
+      <button class="close-btn" @click="setError('')">&times;</button>
       {{ text }}
     </p>
   </div>
@@ -12,19 +12,19 @@ export default {
   name: 'Error',
   data() {
     return {
-      text: ''
+      text: '',
     };
   },
   methods: {
     setError(error) {
       this.text = error;
-    }
+    },
   },
   computed: {
     isVisible() {
       return this.text !== '';
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -37,7 +37,7 @@ export default {
 }
 
 .error-block {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   display: flex;
   position: absolute;

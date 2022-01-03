@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <form class="register-form" @submit.prevent="submitHandler">
       <div class="welcome">Welcome</div>
       <div class="heading">Create an account</div>
@@ -36,10 +36,9 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store.dispatch('register', data)
-        .then(() => this.$router.push('/auth'));
+      this.$store.dispatch('register', data).then(() => this.$router.push('/auth'));
     },
-  }
+  },
 };
 </script>
 
