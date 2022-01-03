@@ -31,7 +31,7 @@
         <span class='active'>{{ projectCount }}</span> items in result
       </p>
       <div class='main__tasks-body'>
-        <Task v-for='task of project.tasks' :key='task.id' :task='task'></Task>
+        <Task v-for='task of project.tasks' :key='task.id' :task='task' @deleteTask='deleteTask($event)'></Task>
         <div class='create__task'>
           <button class='create__task_button'>
             <i class='fas fa-plus'></i>
