@@ -45,18 +45,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 * {
   font-family: Noto Sans, sans-serif;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
   width: 100%;
   height: 100vh;
-  background-color: #17191e;
+  /*background-color: #17191e;*/
   display: flex;
   align-items: center;
   justify-content: center;
