@@ -4,7 +4,10 @@
       <div class="header__left">
         <h3 class="main__heading">{{ project.projectName }}</h3>
         <button class="main__edit" @click="isEdit = true">Edit</button>
-        <a class="main__projects" href="#"><i class="fas fa-chevron-left"></i> All projects</a>
+        <router-link class="main__projects" to="{path: '/projects'}}">
+          <i class="fas fa-chevron-left"></i>
+          All projects
+        </router-link>
       </div>
       <div class="header__right">
         <form action="#">
@@ -42,7 +45,6 @@
 </template>
 
 <script>
-import request from '../plugins/request';
 import Task from './Task';
 import NewTask from './NewTask';
 
@@ -73,9 +75,6 @@ export default {
     },
   },
   mounted() {
-    request('/api/tasks', 'GET', { id: this.$router.params.id }).then((data) => {
-      this.tasks = data;
-    });
   },
 };
 </script>
