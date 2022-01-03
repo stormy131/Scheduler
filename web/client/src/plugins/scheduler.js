@@ -6,6 +6,6 @@ export default {
   install: function (Vue) {
     Vue.prototype.$http = axios;
     Vue.prototype.$store = store;
-    Vue.prototype.$catchWrapper = catchWrapper;
+    Vue.prototype.$catchWrapper = (component) => catchWrapper.bind(component, (err) => console.log(err));
   },
 };
