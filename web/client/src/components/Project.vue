@@ -71,7 +71,17 @@ export default {
     newTask(data) {
       this.tasks.push(data);
     },
-
+    deleteTask(id) {
+      this.$http
+        .delete(`/tasks/${id}`)
+        .then(() => {
+          this.tasks.splice(
+            this.tasks.findIndex((item) => item.id === id),
+            1
+          );
+        })
+        .catch((err) => console.log(err));
+    }
   },
   computed: {
     projectCount() {
