@@ -54,7 +54,7 @@ export default {
 .container {
   width: 100%;
   height: 100vh;
-  /*background-color: #17191e;*/
+  background-color: #17191e;
   display: flex;
   align-items: center;
   justify-content: center;
