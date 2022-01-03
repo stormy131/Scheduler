@@ -15,7 +15,9 @@
       v-bind:project="project"
       ref="projects"
       @addTask="showTask($event)"
-      @changeStatus="changeStatus($event)">
+      @changeStatus="changeStatus($event)"
+      @projectDeleted="onItemDelete($event)"
+    >
     </ProjectItem>
     <div class="item new" @click="show">
       <div class="create"><span></span>Create Project</div>
@@ -85,14 +87,32 @@ export default {
       this.newId = id;
     },
     changeStatus(id) {
-      this.projects.forEach(item => {
-        if(item.active === true && item.id !== id) item.active = !item.active
+      this.$http
+        .patch(`/projects/${id}`)
+        .then(() => {
+          const el = this.projects.find((item) => item.id === id);
+          el.active = !el.active;
+        })
+        .catch((err) => console.log(err));
+      this.projects.forEach((item) => {
+        if (item.active === true && item.id !== id) item.active = !item.active;
       });
-    }
+    },
+    onItemDelete(id) {
+      this.$http
+        .delete(`/projects/${id}`)
+        .then(() => {
+          this.projects.splice(
+            this.projects.findIndex((item) => item.id === id),
+            1
+          );
+        })
+        .catch((err) => console.log(err));
+    },
   },
   mounted() {
     this.$http.get('/projects').then((resp) => {
-      this.projects = resp.data.map(proj => {
+      this.projects = resp.data.map((proj) => {
         const date = new Date(proj.createdAt);
         proj.createdAt = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'long' })}`;
         return proj;
