@@ -1,17 +1,12 @@
 <template>
   <div id="app">
     <router-view />
-    <Error ref="error"></Error>
   </div>
 </template>
 
 <script>
-import Error from './components/Error'
 export default {
   name: 'App',
-  components: {
-    Error
-  },
   mounted: function () {
     this.$http.interceptors.response.use(null, (err) => {
       return new Promise(() => {
