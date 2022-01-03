@@ -10,9 +10,9 @@
       </fieldset>
       <div>
         <input id="importance" name="importance" type="checkbox" v-model.lazy="importance" />
-        <label for="importance">importance</label><br>
+        <label for="importance">importance</label><br />
         <input id="urgency" name="urgency" type="checkbox" v-model.lazy="urgency" />
-        <label for="importance">urgency</label><br>
+        <label for="importance">urgency</label><br />
       </div>
       <fieldset class="new-task__input">
         <legend>Deadline date(optional)</legend>

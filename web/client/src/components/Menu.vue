@@ -11,7 +11,10 @@
       <MenuButton href="projects" name="Projects"></MenuButton>
       <MenuButton href="calendar" name="Calendar"></MenuButton>
       <MenuButton href="reports" name="Reports"></MenuButton>
-      <div class='menu__logout' @click="logout"><i class="fas fa-sign-out-alt" ></i> <p>Logout</p></div>
+      <div class="menu__logout" @click="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <p>Logout</p>
+      </div>
     </div>
   </div>
 </template>
@@ -31,9 +34,8 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('logout')
-        .then(() => this.$router.push('/'));
-    }
+      this.$store.dispatch('logout').then(() => this.$router.push('/'));
+    },
   },
   components: {
     MenuButton,
