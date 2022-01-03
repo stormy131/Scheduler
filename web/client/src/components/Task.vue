@@ -9,7 +9,7 @@
         <h4 class="task_deadline">Deadline: {{ task.deadline }}</h4>
       </div>
     </div>
-    <button class='close-button'>&times;</button>
+    <button class='close-button' @click="$emit('deleteTask', task.id)">&times;</button>
   </div>
 </template>
 
