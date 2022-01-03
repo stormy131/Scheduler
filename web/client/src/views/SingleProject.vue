@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <Menu ref="menu" user="user"></Menu>
-    <Project ref="project"></Project>
+    <Menu :user="user"></Menu>
+    <Project v-if="project" :project="project"></Project>
   </div>
 </template>
 
@@ -24,7 +24,10 @@ export default {
   mounted() {
     this.$http
       .get(`/projects/${this.$route.params.id}`)
-      .then((resp) => (this.project = resp.data))
+      .then((resp) => {
+        this.project = resp.data;
+        console.log(resp);
+      })
       .catch((err) => console.log(err));
   },
 };
