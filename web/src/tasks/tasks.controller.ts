@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Param, Patch, Post, UseGuards, UseInterceptor
 import { JwtGuard } from "src/appGuards/jwt.guard";
 import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
 import { TaskDto } from "./dto/task.dto";
-import { UpdateTaskDto } from "./dto/updateTask";
+import { UpdateTaskDto } from "./dto/updateTask.dto";
 import { TasksService } from "./tasks.service";
 
 @Controller('tasks')

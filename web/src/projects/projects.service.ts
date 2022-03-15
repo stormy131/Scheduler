@@ -22,11 +22,7 @@ export class ProjectsService{
     async getAllProjects(req) : Promise<any> {
         const res = await this.projectsRepo.findAll(req.body.user.id)
 
-        if (!res) {
-            return 'no projects found';
-        }
-
-        return res;
+        return (res ? res : 'no projects found');
     }
 
     async changeActiveProject(id: number): Promise<boolean> {

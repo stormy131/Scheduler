@@ -2,8 +2,8 @@ import { Body, Controller, Delete, Patch, Req, UseGuards, UseInterceptors } from
 import { JwtGuard } from "src/appGuards/jwt.guard";
 import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
 import { AccountService } from "./accounts.service";
-import { UpdateAccount } from "./interface/account.interface";
 import { Request } from 'express';
+import {UpdateAccountDto} from "./dto/updateAccount.dto";
 
 @Controller('account')
 @UseGuards(JwtGuard)
@@ -12,7 +12,7 @@ export class AccountsController{
     constructor(private readonly accountsService: AccountService){}
 
     @Patch()
-    async updateAccount(@Req() req: Request, @Body() body: UpdateAccount){
+    async updateAccount(@Req() req: Request, @Body() body: UpdateAccountDto){
         return await this.accountsService.updateAccount(req, body);
     }
 

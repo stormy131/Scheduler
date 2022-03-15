@@ -1,3 +1,5 @@
+import {ValidationPipe} from "@nestjs/common";
+
 require('dotenv').config();
 
 import { NestFactory } from '@nestjs/core';
@@ -13,6 +15,7 @@ async function bootstrap() {
   await seq.sync({force: true});
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useGlobalPipes(new ValidationPipe({whitelist: true}));
 
   const config = new DocumentBuilder()
     .setTitle('Scheduler api')

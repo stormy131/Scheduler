@@ -32,39 +32,10 @@ export class AuthService {
     };
 
     await this.tokenRepo.create(refToken);
-
-    return {
-      token,
-      refToken,
-      user,
-    };
+    return {token, refToken, user,};
   }
 
   async postReg(newAccount: RegistrationInterface): Promise<boolean> {
     return await tryWrapper(this.accountRepo.create, newAccount);
-  }
-
-  async googleLogin(
-    request,
-  ): Promise<{ message: string; user: { email: string } }> {
-    const { user } = request;
-
-    if (!user)
-      return {
-        message: 'no google user',
-        user: {
-          email: '',
-        },
-      };
-
-    user.name = user.username;
-    delete user.username;
-    user.password = '';
-
-    await this.accountRepo.findOrCreate(user);
-    return {
-      message: 'User from google',
-      user,
-    };
   }
 }

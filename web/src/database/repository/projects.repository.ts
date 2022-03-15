@@ -35,4 +35,8 @@ export class ProjectsRepo{
         }
         await Projects.update({active: true}, {where: {id}});
     }
+
+    async checkId(id: number): Promise<ProjectInfo>{
+        return await Projects.findOne({where: {id}});
+    }
 }
