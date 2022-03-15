@@ -1,9 +1,22 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseGuards, UseInterceptors } from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Patch,
+    Post,
+    Req,
+    UseGuards,
+    UseInterceptors,
+    UsePipes
+} from "@nestjs/common";
 import { Request } from "express";
 import { JwtGuard } from "src/appGuards/jwt.guard";
 import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
 import { ProjectDto } from "./dto/project.dto";
 import { ProjectsService } from "./projects.service";
+import { IdValidationPipe } from '../appPipes/id-validator.pipe';
 
 @Controller('projects')
 @UseGuards(JwtGuard)
@@ -32,6 +45,7 @@ export class ProjectsController {
     }
 
     @Patch(':id')
+    @UsePipes(new IdValidationPipe('projects'))
     async activateProject(@Param('id') id: string): Promise<boolean> {
         return await this.projectsService.changeActiveProject(+id);
     }

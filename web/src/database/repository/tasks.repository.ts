@@ -23,4 +23,8 @@ export class TasksRepo{
     async findAll(fromProject: number): Promise<Task[]>{
         return await Tasks.findAll({where: {fromProject}});
     }
+
+    async checkId(id: number): Promise<Task>{
+        return await Tasks.findOne({where: {id}});
+    }
 }
