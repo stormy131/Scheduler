@@ -2,7 +2,7 @@
   <div class="menu">
     <div class="menu__container">
       <div class="menu__user">
-        <img alt="Tut blyat av netu" class="menu__avatar" src="../assets/avatar.jpg" />
+        <img alt="Avatar" class="menu__avatar" src="../assets/avatar.jpg" />
         <div class="menu__info">
           <h3 class="menu__username">{{ username }}</h3>
           <p class="menu__position">{{ position }}</p>
