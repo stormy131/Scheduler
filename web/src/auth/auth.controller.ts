@@ -24,10 +24,4 @@ export class AuthController {
     async postReg(@Body() data: RegistrationDto){
         return await this.authService.postReg(data);
     }
-
-    @Get('google')
-    @UseGuards(AuthGuard('google'))
-    async googleAuthRedirect(@Req() req: Request){
-        return await this.authService.googleLogin(req);
-    }
 }

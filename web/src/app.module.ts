@@ -6,7 +6,6 @@ import { AccountsModule } from './account/accounts.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { GoogleStrategy } from './auth/auth.strategy';
 import { TokensRepo } from './database/repository/tokens.repository';
 import { ProjectsModule } from './projects/projects.module';
 import { TasksModule } from './tasks/tasks.module';
@@ -24,6 +23,6 @@ require('dotenv').config();
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, TokensRepo, GoogleStrategy],
+  providers: [AppService, TokensRepo],
 })
 export class AppModule {}

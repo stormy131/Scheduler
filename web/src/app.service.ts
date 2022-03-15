@@ -10,10 +10,6 @@ export class AppService {
     private readonly jwtService: JwtService
   ){}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   async refresh(refToken: string, oldToken: string): Promise<string>{
     const res = await this.tokensRepo.findOne(refToken);
     if(!res) return 'Forbidden resource';
