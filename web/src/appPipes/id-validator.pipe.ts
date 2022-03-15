@@ -1,18 +1,25 @@
-import {ArgumentMetadata, BadRequestException, Injectable, PipeTransform} from "@nestjs/common";
+import {ArgumentMetadata, BadRequestException, Inject, Injectable, PipeTransform} from "@nestjs/common";
 import {ProjectsRepo} from "../database/repository/projects.repository";
 import {isNull} from "util";
 import {TasksRepo} from "../database/repository/tasks.repository";
+import {REQUEST} from "@nestjs/core";
+import {Request} from "express";
 
 @Injectable()
 export class IdValidationPipe implements PipeTransform{
-    private repo;
+    private repos = {
+        'projects': new ProjectsRepo(),
+        'tasks': new TasksRepo()
+    };
 
-    constructor(module){
-        this.repo = new (module === 'tasks' ? TasksRepo : ProjectsRepo)();
-    }
+    constructor(@Inject(REQUEST) private req: Request){}
 
     async transform(value: number, metadata: ArgumentMetadata, ): Promise<number>{
-        if(metadata.type === 'body' || !isNull(await this.repo.checkId(value))) return value;
+        const module: string = this.req.originalUrl.split('/').slice(-2, -1).pop();
+        const isValid = metadata.type === 'body' ||
+            !isNull(await this.repos[module].checkId(value));
+
+        if(isValid) return value;
         throw new BadRequestException('Invalid Id');
     }
 }

@@ -17,6 +17,7 @@ import { JwtInterceptor } from "src/appInterceptors/jwt.interceptor";
 import { ProjectDto } from "./dto/project.dto";
 import { ProjectsService } from "./projects.service";
 import { IdValidationPipe } from '../appPipes/id-validator.pipe';
+import {OwnershipValidationPipe} from "../appPipes/owner-validation.pipe";
 
 @Controller('projects')
 @UseGuards(JwtGuard)
@@ -30,6 +31,7 @@ export class ProjectsController {
     }
 
     @Get(':id')
+    @UsePipes(IdValidationPipe, OwnershipValidationPipe)
     async getProjectById(@Param('id') id: string){
         return await this.projectsService.getProject(+id);
     }
@@ -40,12 +42,13 @@ export class ProjectsController {
     }
 
     @Delete(':id')
+    @UsePipes(IdValidationPipe, OwnershipValidationPipe)
     async deleteProject(@Param('id') id: string): Promise<boolean>{
         return await this.projectsService.deleteProject(+id);
     }
 
     @Patch(':id')
-    @UsePipes(new IdValidationPipe('projects'))
+    @UsePipes(IdValidationPipe, OwnershipValidationPipe)
     async activateProject(@Param('id') id: string): Promise<boolean> {
         return await this.projectsService.changeActiveProject(+id);
     }

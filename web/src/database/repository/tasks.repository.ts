@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Task, UpdateTask } from "src/tasks/interfaces/task.interface";
 import { TaskInfo, Tasks } from "../models/tasks";
+import {Projects} from "../models/projects";
 
 @Injectable()
 export class TasksRepo{
@@ -26,5 +27,12 @@ export class TasksRepo{
 
     async checkId(id: number): Promise<Task>{
         return await Tasks.findOne({where: {id}});
+    }
+
+    async checkOwner(id: number): Promise<Task>{
+        return await Tasks.findOne({
+            where: {id},
+            include: [{model: Projects, attributes: ['owner']}]
+        });
     }
 }

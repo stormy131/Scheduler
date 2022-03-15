@@ -5,6 +5,7 @@ import { TaskDto } from "./dto/task.dto";
 import { UpdateTaskDto } from "./dto/updateTask.dto";
 import { TasksService } from "./tasks.service";
 import {IdValidationPipe} from "../appPipes/id-validator.pipe";
+import {OwnershipValidationPipe} from "../appPipes/owner-validation.pipe";
 
 @Controller('tasks')
 @UseGuards(JwtGuard)
@@ -18,12 +19,13 @@ export class TasksController {
     }
 
     @Patch(':id')
-    @UsePipes(new IdValidationPipe('tasks'))
+    @UsePipes(IdValidationPipe, OwnershipValidationPipe)
     async updateTask(@Param('id') id: string, @Body() data: UpdateTaskDto): Promise<boolean>{
         return await this.tasksService.updateTask(+id, data);
     }
 
     @Delete(':id')
+    @UsePipes(IdValidationPipe, OwnershipValidationPipe)
     async deleteTask(@Param('id') id: string): Promise<boolean>{
         return await this.tasksService.deleteTask(+id);
     }

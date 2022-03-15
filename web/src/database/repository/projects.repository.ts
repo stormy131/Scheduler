@@ -39,4 +39,8 @@ export class ProjectsRepo{
     async checkId(id: number): Promise<ProjectInfo>{
         return await Projects.findOne({where: {id}});
     }
+
+    async checkOwner(id: number): Promise<ProjectInfo>{
+        return await Projects.findOne({where: {id}, attributes: ['owner']});
+    }
 }
